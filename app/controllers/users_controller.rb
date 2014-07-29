@@ -1,4 +1,14 @@
 class UsersController < ApplicationController
+	 before_action :authenticate_user!
+	 
+	 def index
+	 end
+
+	 def show
+	 end
+
+	 def new
+	 end
 
 	 def update
 	 	binding.pry
@@ -8,6 +18,8 @@ class UsersController < ApplicationController
 	 		format.html {render :edit}
 	 	end
 	 end
+
+
 
 	 private
 	 def set_user
