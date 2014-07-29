@@ -1,9 +1,9 @@
 class CreateFriendships < ActiveRecord::Migration
   def change
     create_table :friendships do |t|
-      t.integer :friend_requester
-      t.integer :friend_accepter
-      t.boolean :friends?
+      t.integer :requester_id
+      t.integer :accepter_id
+      t.string :status
 
       t.timestamps
     end

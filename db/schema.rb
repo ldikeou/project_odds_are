@@ -11,19 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140729155043) do
+ActiveRecord::Schema.define(version: 20140729161005) do
+
+  create_table "bids", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "reciever_id"
+    t.string   "completion_status"
+    t.string   "description"
+    t.integer  "range"
+    t.integer  "recip_guess"
+    t.integer  "challenger_guess"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "friendships", force: true do |t|
-    t.integer  "friend_requester"
-    t.integer  "friend_accepter"
-    t.boolean  "friends?"
+    t.integer  "requester_id"
+    t.integer  "accepter_id"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
     t.string   "username"
-    t.string   "lstatus"
+    t.string   "l_status"
     t.text     "about"
     t.datetime "created_at"
     t.datetime "updated_at"
