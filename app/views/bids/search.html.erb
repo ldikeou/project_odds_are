@@ -1,16 +1,14 @@
 <h1> Bid Creation Page </h1>
 
-<%= content_for :search do %>
-	<%= form_tag friendship_path(params[:friend_to_add]), method: :get do %>
-		<div class = "form-group">
-    		<%= text_field_tag :q, params[:q], class: "form-control", placeholder: "Search" %> 
-		</div>
-	<% end %>
-<% end %>
+<%= form_tag :controller => 'bids', :action => 'search', :method => 'get' do %>
+      <%= text_field_tag :search, params[:search], :id => 'search_field' %>
+      <%= submit_tag "Search", :name => nil %> 
+<% end %> 
 
 
 <!-- create a new challenge in our bids path with the tag for which friend  -->
-<%= form_for @new_challenge, bids_path(params[:friend]) do |c| %>
+
   <%= c.label :content, "Challenge!" %>
   <%= c.text_area :content, :size => "30x20" %>
-<% end %>
+
+

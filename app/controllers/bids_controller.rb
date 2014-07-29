@@ -1,5 +1,6 @@
 class BidsController < ApplicationController
-	
-	def index
+
+	def search
+		@bids 
 	end
 end
