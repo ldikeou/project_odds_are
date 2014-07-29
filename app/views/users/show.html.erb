@@ -1,0 +1,23 @@
+<!-- the user profile -->
+
+<!-- need a nav bar at the top that is fixed -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  	<div class="container">
+		<ul>
+			<li><a class="nav_logo">Odds Are</a></li>
+			<li><a href="new_bid_path">Make a Bid!</a></li>
+			<!-- find friends search bar would be nice -->
+		</ul>
+	</div>
+</nav>
+
+
+<!-- on the left column I need user image, status, about fields and bid button -->
+<div class="prof_col">
+	<%=image_tag("example_image.png", alt: "Example Image")%><br>
+	<h5> Where the legendary status bar will be.</h5><br>
+	<ul>
+		<li>About</li>
+		<%= link_to 'Edit', update_user_path %>
+	</ul>
+</div>

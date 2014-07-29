@@ -1,14 +1,14 @@
 <h1> Bid Creation Page </h1>
 
-<%= form_tag :controller => 'bids', :action => 'search', :method => 'get' do %>
-      <%= text_field_tag :search, params[:search], :id => 'search_field' %>
+<!-- creates the search bar that will eventually search the friends -->
+<%= form_tag :controller => 'grants', :action => 'search', :method => 'get' do %>
+     <%= text_field_tag :search, params[:search], :id => 'search_field' %>
       <%= submit_tag "Search", :name => nil %> 
 <% end %> 
 
+<!-- creates the text area for the challenge -->
 
-<!-- create a new challenge in our bids path with the tag for which friend  -->
-
-  <%= c.label :content, "Challenge!" %>
-  <%= c.text_area :content, :size => "30x20" %>
+<%= c.label :content, "Challenge!" %>
+<%= c.text_area :content, :size => "30x20" %>
 
 

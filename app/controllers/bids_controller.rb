@@ -1,6 +1,7 @@
 class BidsController < ApplicationController
 
 	def search
-		@bids 
+		@bids=Bid.all
+		
 	end
 end
