@@ -3,8 +3,7 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :username
       t.string :lstatus
-      t.string :profpic
-      t.string :about
+      t.text :about
 
       t.timestamps
     end
