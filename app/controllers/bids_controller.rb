@@ -5,6 +5,7 @@ class BidsController < ApplicationController
 	
 
 	def new
+		@bid = Bids.new
 	end
 
 	def show
