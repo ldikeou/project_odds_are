@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sent_id: 1
+  recieved_id: 1
+  completion_status: MyString
+  description: MyString
+  range: 1
+  recip_guess: 1
+  challenger_guess: 1
+
+two:
+  sent_id: 1
+  recieved_id: 1
+  completion_status: MyString
+  description: MyString
+  range: 1
+  recip_guess: 1
+  challenger_guess: 1
