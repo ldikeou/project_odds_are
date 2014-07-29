@@ -1,11 +1,9 @@
 class BidsController < ApplicationController
 
-
  before_action :authenticate_user!
 	
-
 	def new
-		@bid = Bids.new
+		@new_bid = Bid.new
 	end
 
 	def show
