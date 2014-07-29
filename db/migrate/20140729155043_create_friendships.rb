@@ -3,7 +3,7 @@ class CreateFriendships < ActiveRecord::Migration
     create_table :friendships do |t|
       t.integer :requester_id
       t.integer :accepter_id
-      t.string :friends?
+      t.string :status
 
       t.timestamps
     end
