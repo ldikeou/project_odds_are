@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
 
-<<<<<<< HEAD
-=======
-
   devise_for :users
 
->>>>>>> 44559de0683bd3d863e15c8a5a5b360b00e6cd09
   resources :users, only: [:show , :index, :delete, :new]
   resources :bids
 
