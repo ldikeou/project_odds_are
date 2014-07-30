@@ -1,0 +1,17 @@
+<h1> Bid Creation Page </h1>
+
+<!-- creates the search bar that will eventually search the friends -->
+<div class="form-group">
+    <input type="text" class="form-control" placeholder="Search for Friends">
+</div>
+<button type="submit" class="btn btn-default">Submit</button>
+
+
+<!-- creates the text area for the challenge -->
+<%= form_for @new_bid do |f| %>
+	<%= f.label :description, "Challenge someone if you dare..." %> <br>
+	<%= f.text_area :description, :size => "30x20" %>
+	<%= f.submit "Legends Never Die."%>
+<% end %>
+
+
