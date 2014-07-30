@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	 
 
 	 def search()
-		@users= User.search(params[:search])
+		@users= User.all.search(params[:search])
 	 end
 
 
@@ -27,6 +27,10 @@ class UsersController < ApplicationController
 
 	 private
 	 def set_user
-	 	# @user = User.
+	 	@user = User
 	 end
+
+
+
+
 end

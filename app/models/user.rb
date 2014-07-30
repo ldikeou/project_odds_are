@@ -9,7 +9,7 @@ has_many :friendships
 
 	def self.search(query)
 		search_condition= "%" + query + "%"
-
+		where( "username like ?", "search_condition")
 	end
 
          
