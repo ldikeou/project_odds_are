@@ -1,14 +1,12 @@
 class UsersController < ApplicationController
 	 before_action :authenticate_user!
-	 
 
 	 def search()
 		@users= User.all.search(params[:search])
 	 end
 
-
 	 def show
-	 	
+	 	# @user =User.all
 	 end
 
 	 def new
