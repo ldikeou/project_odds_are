@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 	 end
 
 	 def update
-	 	binding.pry
+	 	# binding.pry
 	 	if @user.update(about_params)
 	 		format.html {redirect to @about, notice: 'About completed! Legend plus one'}
 	 	else

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :bids
 
+  get "search/:action" => "search#:action" , as: :search_path
+
   root to: "homes#index"
 
   
