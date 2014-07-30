@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :users, only: [:show , :index, :edit]
+  resources :users, only: [:show , :edit]
 
   resources :bids
 
