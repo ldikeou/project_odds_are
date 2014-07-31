@@ -1,12 +1,30 @@
+
+
 <!-- the user profile -->
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Profile Page</title>
+	<%= stylesheet_link_tag "userprofile" %>
+</head>
+<body>
+	
 <!-- twitter bootstrap: grid system, default themes on the left column I need user image, status, about fields and bid button -->
-<div class="prof_col">
-	<%=image_tag("example_image.png", alt: "Example Image")%><br>
-	<h5> Where the legendary status bar will be.</h5><br>
-	<ul>
-		<li>About</li>
-		<%= link_to 'Edit', edit_user_path %>
-	</ul>
+<div class = "wrapper">
+	<div class="content-secondary">
+		<%=image_tag("example_image.png", alt: "Example Image")%><br>
+		<h5> Where the legendary status bar will be.</h5><br>
+		<ul>
+			<li>About</li>
+			<%= link_to 'Edit', edit_user_path %>
+		</ul>
+	</div>
+	<div class="content-main">
+		<h4>Where the biddies go.</h4>
+	</div>
 </div>
+
+</body>
+</html>
+
