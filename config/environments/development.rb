@@ -1,4 +1,7 @@
 Rails.application.configure do
+  
+  Paperclip.options[:command_path] = "/usr/local/bin/"
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
