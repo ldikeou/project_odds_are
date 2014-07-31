@@ -1,24 +1,30 @@
-<h1> Bid Creation Page </h1>
 
-<!-- creates the search bar that will eventually search the friends -->
-<div class="form-group">
-    <input type="text" class="form-control" placeholder="Search for Friends">
+<div class="container">
 
-<%= form_tag("/search", method: "get") do %>
-<%= label_tag(:q, "Search a friend to challenge:") %>
-<%= text_field_tag(:q) %>
-<% end %>
+	<h1> Bid Creation Page </h1>
+	<!-- creates the search bar that will eventually search the friends -->
+	<div class="form-group">
+	<%= form_tag(new_bid_path, method: "get") do %>
+	<%= label_tag(:q, "Search a friend to challenge:") %>
+	<%= text_field_tag(:q) %>
+	<% end %>
+	</div>
+	
+	
+	
+	
+	<!-- creates the text area for the challenge -->
+	<%= form_for @new_bid do |f| %>
+		
+		<%= f.label :description, "Challenge someone if you dare..." %>
 
+		<% if @users %>
+			<%= f.select(:reciever_id, options_for_select(@users.map {|user| [user.username, user.id]})) %><br>
+				<!-- do select_tag, pass in options_for_select, pass  here -->
+		<% end %>
 
+		<%= f.text_area :description, :size => "30x20" %>
+		<%= f.submit "Legends Never Die." %>
+	<% end %>
 </div>
-<button type="submit" class="btn btn-default">Submit</button>
-
-
-<!-- creates the text area for the challenge -->
-<%= form_for @new_bid do |f| %>
-	<%= f.label :description, "Challenge someone if you dare..." %> <br>
-	<%= f.text_area :description, :size => "30x20" %>
-	<%= f.submit "Legends Never Die." %>
-<% end %>
-
 
