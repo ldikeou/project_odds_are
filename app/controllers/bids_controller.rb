@@ -4,6 +4,10 @@ class BidsController < ApplicationController
 	
 	def new
 		@new_bid = Bid.new
+		if params[:q]
+			@users = User.search(params[:q]) 
+			# binding.pry
+		end
 	end
 
 	def show
@@ -24,18 +28,24 @@ class BidsController < ApplicationController
 		# set description
 	end
 
-
 	def create
 		@bid = Bid.create(bid_params)
 		@bid.sender_id = current_user.id
 		@bid.save
+		# make notification and send to reciever
 		redirect_to current_user
+	end
+
+	def update_reciever
+		@bid= bid_params
+		@bid.reciever_id = :reciever_id
 	end
 
 private
 	
 	def bid_params
-		params.require(:bid).permit(:description , :sender_id)
+		params.require(:bid).permit(:description , :reciever_id)
+		# {description: "my desc", receiver_id: 55}
 	end
 
 
