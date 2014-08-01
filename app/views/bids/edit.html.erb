@@ -1,0 +1,9 @@
+<!-- we want this page to be modular after you recieve the notification -->
+<div class="container text-center">
+	<h1>"Congrats" + sender_id +" has challenged you!"<h1>
+	
+	<%= image_tag "legends.png" %> <br>
+
+	<%= link_to 'Accept: To be legendary', bid_path(@bid, completion_status: "accepted"), method: "PATCH", class: "btn btn-primary btn-lg" %>
+	<%= link_to 'Decline: You will not', bid_path(@bid, completion_status: "declined"), method: "PATCH", class: "btn btn-primary btn-lg" %>
+</div>

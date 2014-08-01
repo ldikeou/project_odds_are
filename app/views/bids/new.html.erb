@@ -1,13 +1,11 @@
-
-
 <div class="container">
 
 	<h1> Bid Creation Page </h1>
 	<!-- creates the search bar that will eventually search the friends -->
 	<div class="form-group">
-	<%= form_tag(new_bid_path, method: "get") do %>
-	<%= label_tag(:q, "Search a friend to challenge:") %>
-	<%= text_field_tag(:q) %>
+		<%= form_tag(new_bid_path, method: "get") do %>
+		<%= label_tag(:q, "Search a friend to challenge:") %>
+		<%= text_field_tag(:q) %>
 	<% end %>
 </div>
 	<!-- creates the text area for the challenge -->
