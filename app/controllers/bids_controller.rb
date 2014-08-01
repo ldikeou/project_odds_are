@@ -10,6 +10,10 @@ class BidsController < ApplicationController
 		end
 	end
 
+	def edit
+		@bid = Bid.find(params[:id])
+	end
+
 	def show
 	end
 
@@ -19,7 +23,9 @@ class BidsController < ApplicationController
 		# when recip picks number ie recip_guess
 		# when challenger pick number
 		# set sender_id
-		@bid = Bid.find_by_id(params[:id])
+		@bid = Bid.find(params[:id])
+		@bid.update(update_params)
+		redirect_to @bid 
 		# set reciever_id
 		# --> @new_bid.reciever_id = User.find_by("selected user by search form")
 
@@ -46,6 +52,14 @@ private
 	def bid_params
 		params.require(:bid).permit(:description , :reciever_id)
 		# {description: "my desc", receiver_id: 55}
+	end
+
+	def update_params
+		if params[:completion_status]
+			params.require(:completion_status) # => "string"
+		else
+			params.require(:otherstuff)
+		end
 	end
 
 
