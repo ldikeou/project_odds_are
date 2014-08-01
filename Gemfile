@@ -1,10 +1,14 @@
 source 'https://rubygems.org'
 
 gem "twitter-bootstrap-rails"
+gem 'quiet_assets'
+
 
 gem "pry-rails"
 
 gem 'devise'
+
+gem 'paperclip'
 
 gem 'bootstrap-sass'
 

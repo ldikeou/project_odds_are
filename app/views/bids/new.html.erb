@@ -1,4 +1,5 @@
 
+
 <div class="container">
 
 	<h1> Bid Creation Page </h1>
@@ -8,23 +9,18 @@
 	<%= label_tag(:q, "Search a friend to challenge:") %>
 	<%= text_field_tag(:q) %>
 	<% end %>
-	</div>
-	
-	
-	
-	
+</div>
 	<!-- creates the text area for the challenge -->
-	<%= form_for @new_bid do |f| %>
-		
+<div class="container">
+	<%= form_for @new_bid do |f| %>	
 		<%= f.label :description, "Challenge someone if you dare..." %>
-
 		<% if @users %>
 			<%= f.select(:reciever_id, options_for_select(@users.map {|user| [user.username, user.id]})) %><br>
 				<!-- do select_tag, pass in options_for_select, pass  here -->
 		<% end %>
-
 		<%= f.text_area :description, :size => "30x20" %>
 		<%= f.submit "Legends Never Die." %>
 	<% end %>
+</div>
 </div>
 
