@@ -19,7 +19,7 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 	end
 
 	def friends
-		friendships = friendships.where(arel_table[:requester_id].eq(current_user.id).or(arel_table[:accepter_id].eq(current_user.id))).where(arel_table[:accepter_id].not_eq(nil))
+		friendships = friendships.where(arel_table[:requester_id].eq(current_user.id).or(arel_table[:accepter_id].eq(current_user.id))).where(arel_table[:status].eq("accepted"))
 		friendships.map do |friendship|
 			if friendship.requester_id == id
 				friendship.accepter
