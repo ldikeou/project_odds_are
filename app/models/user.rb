@@ -7,7 +7,7 @@ devise :database_authenticatable, :registerable,
 has_many :friendships
 
 has_attached_file :profile_pic, :styles => { :medium => "300x300>", :thumb => "100x100>" }, 
-	:default_url => "/images/:style/missing.png"
+	:default_url => "default.png"
 validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 
 
