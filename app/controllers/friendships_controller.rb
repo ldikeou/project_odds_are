@@ -20,6 +20,11 @@ class FriendshipsController < ApplicationController
 		redirect_to user_path
 	end
 
+private
 
+def friendship_params
+		params.require(:friendship).permit(:accepter_id)
+		# {description: "my desc", receiver_id: 55}
+	end
 
 end
