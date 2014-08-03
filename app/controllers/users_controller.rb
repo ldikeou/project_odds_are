@@ -4,11 +4,13 @@ class UsersController < ApplicationController
 	 def index
 	 	if params[:q]
 			@users = User.search(params[:q])
+			@users.delete current_user
 		end
 	 end
 
 	 def search()
 		@users= User.all.search(params[:search])
+		@users.delete current_user
 	 end
 
 	 def show

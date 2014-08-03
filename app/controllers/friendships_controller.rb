@@ -14,7 +14,7 @@ class FriendshipsController < ApplicationController
 		@new_friendship = Friendship.new
 		if params[:q]
 			@users = User.search(params[:q]) 
-			# binding.pry
+			@users.delete current_user
 		end
 		
 	end
