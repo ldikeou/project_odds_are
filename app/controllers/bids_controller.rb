@@ -10,7 +10,6 @@ class BidsController < ApplicationController
 		@new_bid = Bid.new
 		if params[:q]
 			@users = User.search(params[:q]) 
-			# binding.pry
 		end
 	end
 
@@ -47,6 +46,7 @@ class BidsController < ApplicationController
 		@bid.sender_id = current_user.id
 		@bid.save
 		# make notification and send to reciever
+		binding.pry	
 		redirect_to current_user
 	end
 
