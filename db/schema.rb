@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731174736) do
+ActiveRecord::Schema.define(version: 20140803154215) do
 
   create_table "bids", force: true do |t|
     t.integer  "sender_id"
-    t.integer  "reciever_id"
+    t.integer  "receiver_id"
     t.string   "completion_status"
     t.string   "description"
     t.integer  "range"

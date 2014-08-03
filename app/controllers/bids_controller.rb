@@ -4,6 +4,8 @@ class BidsController < ApplicationController
 	
 	def index
 		@bids = Bid.all
+		@new_bid = Bid.new
+
 	end
 
 	def new
@@ -12,6 +14,13 @@ class BidsController < ApplicationController
 			@users = User.search(params[:q]) 
 		end
 	end
+
+	def destroy
+		@bid = Bid.find(params[:id])
+		@bid.destroy
+		redirect_to bids_path
+	end
+
 
 	def edit
 		@bid = Bid.find(params[:id])
@@ -50,15 +59,15 @@ class BidsController < ApplicationController
 		redirect_to current_user
 	end
 
-	def update_reciever
+	def update_receiver
 		@bid= bid_params
-		@bid.reciever_id = :reciever_id
+		@bid.receiver_id = :receiver_id
 	end
 
 private
 	
 	def bid_params
-		params.require(:bid).permit(:description , :reciever_id)
+		params.require(:bid).permit(:description , :receiver_id)
 		# {description: "my desc", receiver_id: 55}
 	end
 
