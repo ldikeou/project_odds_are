@@ -15,6 +15,11 @@ class BidsController < ApplicationController
 		end
 	end
 
+	def show
+		@bid = Bid.find(params[:id])
+	end
+
+
 	def destroy
 		@bid = Bid.find(params[:id])
 		@bid.destroy
@@ -64,7 +69,7 @@ private
 
 	def update_params
 		if params[:completion_status]
-			params.require(:completion_status) # => "string"
+			{completion_status: params[:completion_status]}		
 		else
 			params.require(:otherstuff)
 		end
