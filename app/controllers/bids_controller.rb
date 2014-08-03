@@ -60,7 +60,6 @@ class BidsController < ApplicationController
 		@bid.sender_id = current_user.id
 		@bid.save
 		# make notification and send to reciever
-		binding.pry	
 		redirect_to current_user
 	end
 
@@ -80,7 +79,7 @@ private
 		if params[:completion_status]
 			{completion_status: params[:completion_status]}		
 		else
-			params.require(:otherstuff)
+			params.require(:bid).permit(:range)
 		end
 	end
 

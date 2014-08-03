@@ -3,7 +3,9 @@
 <div class="jumbotron">
   <h1>Odds Are...</h1>
   <h3><%= @bid.description %></h3>
-  <%= number_field :Question1, :in => 0..-100, :step => '.1' %>
-  <p> Set Range </p>
+  <%= form_for @bid do |b|%> 
+    <%= b.number_field :range, :in => 0..100, :step => '1' %>
+    <p> Set Range </p>
+  <%end%>
 </div>
 
