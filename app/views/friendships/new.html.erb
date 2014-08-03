@@ -1,0 +1,17 @@
+<div class="form-group">
+	<%= form_tag(new_friendship_path, method: "get") do %>
+		<%= label_tag(:q, "Who do you want to friend:") %>
+		<%= text_field_tag(:q) %>
+	<% end %>
+</div>
+
+<div class="container">
+	<%= form_for @new_friendship do |f| %>	
+		<%= f.label :accepter_id, "chose which one" %>
+		<% if @users %>
+			<%= f.select(:accepter_id, options_for_select(@users.map {|user| [user.username, user.id]})) %><br>
+				<!-- do select_tag, pass in options_for_select, pass  here -->
+		<% end %>
+		<%= f.submit "add friend" %>
+	<% end %>
+</div>

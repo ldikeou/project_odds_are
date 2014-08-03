@@ -1,2 +1,28 @@
 class Bid < ActiveRecord::Base
+	belongs_to :sender, :class_name => 'User'
+	belongs_to :receiever, :class_name => 'User'
+
+	def pickRange(range, bid)
+		bid.range=range
+		bid.save
+		bid
+	end
+
+	def setRecipGuess(guess, bid)
+		bid.recip_guess = guess
+		bid.save
+		bid
+	end
+
+
+	def setChallengerGuess(guess, bid)
+		bid.challenger_guess = guess
+		bid.save
+		bid
+	end
+
+	
+
+
+
 end
