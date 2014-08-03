@@ -34,7 +34,7 @@ class FriendshipsController < ApplicationController
 	def update
 		f = Friendship.find(params[:id])
 		f.update(status: params[:status])
-		redirect_to friendships_path, notice: "friendshipwas #{params[:status]}"
+		redirect_to friendships_path, notice: "friendship was #{params[:status]}"
 	end
 
 private

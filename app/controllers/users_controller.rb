@@ -1,12 +1,20 @@
 class UsersController < ApplicationController
 	 before_action :authenticate_user!
 
+	 def index
+	 	if params[:q]
+			@users = User.search(params[:q])
+		end
+	 end
+
 	 def search()
 		@users= User.all.search(params[:search])
 	 end
 
 	 def show
-	 	# @user =User.all
+	 	@user_to_show = User.find(params[:id])
+	 	return redirect_to new_friendship_path unless current_user.friends.include?(@user_to_show) ||
+	 	@user_to_show == current_user
 	 end
 
 	 # def update
