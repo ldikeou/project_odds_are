@@ -6,8 +6,8 @@
 		<%= form_tag(new_bid_path, method: "get") do %>
 		<%= label_tag(:q, "Search a friend to challenge:") %>
 		<%= text_field_tag(:q) %>
-	<% end %>
-</div>
+		<% end %>
+	</div>
 	<!-- creates the text area for the challenge -->
 <div class="container">
 	<%= form_for @new_bid do |f| %>	

@@ -26,6 +26,9 @@ class BidsController < ApplicationController
 		@bid = Bid.find(params[:id])
 		@bid.update(update_params)
 		redirect_to @bid 
+
+
+		# updatebid(action, bid)
 		# set reciever_id
 		# --> @new_bid.reciever_id = User.find_by("selected user by search form")
 

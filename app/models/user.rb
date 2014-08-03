@@ -6,6 +6,7 @@ devise :database_authenticatable, :registerable,
 
 has_many :friendships, foreign_key: "requester_id"
 # has_many :friends, through: :friendships, class_name: "User"
+has_many :bids
 
 
 has_attached_file :profile_pic, :styles => { :medium => "300x300>", :thumb => "100x100>" }, 

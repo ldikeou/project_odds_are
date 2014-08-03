@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
  
   resources :bids
+  resources :friendships
 
   get "search/:action" => "search#:action" , as: :search_path
 
