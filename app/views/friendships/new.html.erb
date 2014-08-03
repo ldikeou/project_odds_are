@@ -7,9 +7,9 @@
 
 <div class="container">
 	<%= form_for @new_friendship do |f| %>	
-		<%= f.label :description, "Challenge someone if you dare..." %>
+		<%= f.label :description, "chose which one" %>
 		<% if @users %>
-			<%= f.select(:reciever_id, options_for_select(@users.map {|user| [user.username, user.id]})) %><br>
+			<%= f.select(:accepter_id, options_for_select(@users.map {|user| [user.username, user.id]})) %><br>
 				<!-- do select_tag, pass in options_for_select, pass  here -->
 		<% end %>
 	<% end %>
