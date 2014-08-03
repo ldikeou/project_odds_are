@@ -3,7 +3,7 @@ class BidsController < ApplicationController
  before_action :authenticate_user!
 	
 	def index
-		@bids = Bids.all
+		@bids = Bid.all
 	end
 
 	def new
