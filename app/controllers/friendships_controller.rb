@@ -1,6 +1,11 @@
 class FriendshipsController < ApplicationController
 
 
+	def index
+		@friends= current_user.friends
+	end
+
+
 	def edit
 		@pending_friendships = Friendship.where(accepter_id: current_user, status: "pending")
 	end
@@ -17,9 +22,12 @@ class FriendshipsController < ApplicationController
 	def create
 		# binding.pry
 		Friendship.request(current_user, friendship_params[:accepter_id])
-	
 		redirect_to user_path(current_user)
+	end
 
+	def delete
+		@friendship = Friendship.find(params[:id])
+		redirect_to friendships_path
 	end
 
 
