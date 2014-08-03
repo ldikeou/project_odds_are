@@ -2,6 +2,10 @@ class BidsController < ApplicationController
 
  before_action :authenticate_user!
 	
+	def index
+		@bids = Bid.all
+	end
+
 	def new
 		@new_bid = Bid.new
 		if params[:q]
@@ -15,6 +19,7 @@ class BidsController < ApplicationController
 	end
 
 	def show
+		@bid = Bid.find(params[:id])
 	end
 
 	def update
