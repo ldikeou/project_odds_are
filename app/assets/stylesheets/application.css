@@ -4,6 +4,8 @@
 /*@import "home";*/
 
 
+body { padding-top: 100px; }
+
 /*//= require jquery
 //= require bootstrap-sprockets*/
 

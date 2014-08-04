@@ -1,8 +1,8 @@
 <div class="jumbotron">
 	<h1>Odds Are...</h1>
 	<h3><%= @bid.description %></h3>
-	<%= form_for @bid, method: :patch do |b| %> 
-		<%= b.number_field :recip_guess, :in => 0..@bid.range, :step => '1' %>
-		<p> GUESS!</p>
+	<%= form_for @bid, method: :patch do |b| %>
+	<%= b.number_field :recip_guess, :in => 0..@bid.range, :step => '1' %>
+	<p> GUESS!</p>
 	<%end%>
-</div>	
+</div>

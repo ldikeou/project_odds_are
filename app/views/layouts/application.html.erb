@@ -1,76 +1,66 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>OddsAre</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<!-- need a nav bar at the top that is fixed -->
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Odds Are.</a><br>
-<!-- need to add the if statements that will change if the user is logged in or not -->
-      
-      <% if user_signed_in? %>    
-        <%= link_to current_user.username.capitalize, current_user %>
-        
-         <ul class="nav navbar-nav navbar-right">
-        
-          <li><%= link_to "EDIT.", edit_user_registration_path %></li> 
-          <li><%= link_to 'Make Bid', new_bid_path(@bid), class: "btn btn-primary btn-lg" %></li>
-          <li><%= link_to "log out", destroy_user_session_path , method: :delete %></li>
-          <li><%= link_to 'Friend Requests', edit_friendship_path(current_user), class: "btn btn-primary btn-lg pull-left" %></li>
-          <li><%= link_to 'Show Bids', bids_path, class: "btn btn-primary btn-lg pull-left" %></li>
-          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-            </ul> </li>       
-      </ul>
-      
-      <% else %>
-        <%= link_to "Login in", user_session_path , method: :post %>
-        <%= link_to "Sign up", new_user_registration_path , method: :get %>
+  <head>
+    <title>OddsAre</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "https://js.stripe.com/v1/" %>
+    <%= javascript_include_tag "application" %>
+
+    <%= csrf_meta_tags %>
+    
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Odds Are.</a><br>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <% if user_signed_in? %>
+          <ul class="nav navbar-nav">
+            <li><%= link_to current_user.username.capitalize, current_user %></li>
+            <li><%= link_to 'Friend Requests', edit_friendship_path(current_user)%></li>
+            <li><%= link_to 'Challenge', new_bid_path(@bid) %></li>
+            <li><%= link_to 'Show Bids', bids_path%></li>
+            <li><%= link_to "log out", destroy_user_session_path , method: :delete %></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to "EDIT.", edit_user_registration_path %></li>
+                <li><a href="#">Another action</a></li>
+                <li class="divider"></li>
+                <li><%= link_to "log out", destroy_user_session_path , method: :delete %></li>
+              </ul>
+            </li>
+          </ul>
+           <div class="form-group">
+              <%= form_tag(users_path, method: "get", class: "navbar-form navbar-right") do %>
+                <%= text_field_tag :q, params[:q], placeholder: "Search" , class: "form-control" %>
+             <% end %>
+         </div>    
+          <% else %>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Login in", user_session_path , method: :post %></li>
+            <li><%= link_to "Sign up", new_user_registration_path , method: :get %></li>
+          </ul>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+   </head>
+  <body>
+    <div class="container">
+      <% if flash[:notice] %>
+      <p class="alert"><%= flash[:notice] %></p>
       <% end %>
+      <%= yield %>
     </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      
-      
-        <div class="form-group">
-          <%= form_tag(users_path, method: "get", class: "navbar-form navbar-right") do %>
-            <%= text_field_tag :q ,  params[:q] , placeholder: "Search" , class: "form-control" %>
-           <% end %>     
-         </div>
-      
-     
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-
-
-<div class="container">
-  <% if flash[:notice] %>
-    <p class="alert"><%= flash[:notice] %></p>
-  <% end %>
-  <%= yield %>
-</div>
-
-
-</body>
+   
+  </body>
 </html>
-
-
