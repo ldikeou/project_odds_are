@@ -1,8 +1,33 @@
 
 <table class="table table-striped">
+  <h1> Challenges For Me <h1>
   <thead>
     <tr>
       <th>Sender: Challenger</th>
+      <th>Challenge Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bids.each do |bid| %>
+      <tr>
+        <% if bid.receiver == current_user %>
+          <td><%= bid.sender.username %></td>
+          <td><%= bid.description %></td>
+          <td><%= link_to 'Edit', edit_bid_path(bid) %></td>
+          <td><%= link_to 'Destroy', bid, method: :delete, data: { confirm: 'Are you sure?' } %></td>      
+        <% end %>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>  
+
+<table class="table table-striped">
+  <h1> People I Have Challenged! muahaha <h1>
+  <thead>
+    <tr>
       <th>Receiver: NAME</th>
       <th>Challenge Description</th>
       <th colspan="3"></th>
@@ -12,12 +37,13 @@
   <tbody>
     <% @bids.each do |bid| %>
       <tr>
-        <td><%= bid.sender.username %></td>
-        <td><%= bid.receiver.username %></td>
-        <td><%= bid.description %></td>
-        <td><%= link_to 'Edit', edit_bid_path(bid) %></td>
-        <td><%= link_to 'Destroy', bid, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if bid.sender == current_user %>
+          <td><%= bid.receiver.username %></td>
+          <td><%= bid.description %></td>
+          <td><%= link_to 'Edit', edit_bid_path(bid) %></td>
+          <td><%= link_to 'Destroy', bid, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+        <% end %>
       </tr>
     <% end %>
   </tbody>
-</table>
+</table> 

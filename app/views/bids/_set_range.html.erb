@@ -1,0 +1,8 @@
+<div class="jumbotron">
+	<h1>Odds Are...</h1>
+	<h3><%= @bid.description %></h3>
+	<%= form_for @bid, method: :patch do |b| %> 
+		<%= b.number_field :range, :in => 0..100, :step => '1' %>
+		<p> Set Range </p>
+	<%end%>
+</div>
