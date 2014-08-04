@@ -11,7 +11,7 @@ class FriendshipsController < ApplicationController
 	end
 
 	def new
-		@new_friendship = Friendship.new
+		@friendship = Friendship.new
 		if params[:q]
 			@users = User.search(params[:q]) 
 			@users -= [current_user]
@@ -20,7 +20,7 @@ class FriendshipsController < ApplicationController
 	end
 
 	def create
-		Friendship.request(current_user, friendship_params[:accepter_id])
+		Friendship.request(current_user.id, params[:accepter_id].to_i)
 		redirect_to user_path(current_user)
 	end
 

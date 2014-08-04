@@ -5,5 +5,6 @@
 		<%= b.number_field :recip_guess, :in => 0..@bid.range, :step => '1' %>
 		<p> GUESS!</p>
 		<%= b.hidden_field :completion_status, :value => "ready_for_challenger" %>
+
 	<%end%>
-</div>	
+</div>
