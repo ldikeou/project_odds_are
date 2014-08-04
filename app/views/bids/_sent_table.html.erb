@@ -16,17 +16,13 @@
           <td><%= bid.description %></td>
           <% if bid.completion_status == "ready_for_range" %>
             <td>Waiting for Recipient to Accept</td>
-          <% end %>
-          <% if bid.completion_status == "ready_for_challenger" %>
+          <% elsif bid.completion_status == "ready_for_challenger" %>
             <td><%= link_to 'PLAY.',edit_bid_path(bid), class: "btn btn-success" %></td>
-          <% end %>
-          <% if bid.completion_status == "determine_winner" %>
+          <% elsif bid.completion_status == "determine_winner" %>
             <td><%= link_to 'Results.',edit_bid_path(bid), class: "btn btn-success" %></td>
-          <% end %>
-          <% if bid.completion_status == "complete_the_challenge" %>
+          <% elsif bid.completion_status == "complete_the_challenge" %>
             <td><%= link_to 'Whoohoo.They lost.',edit_bid_path(bid), class: "btn btn-info" %></td>
-          <% end %>
-          <% if bid.completion_status == "lost" %>
+          <% elsif bid.completion_status == "lost" %>
             <td><%= link_to 'LOST. Game Over',edit_bid_path(bid), class: "btn btn-danger" %></td>
           <% end %>
           <td><%= link_to 'Destroy', bid, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
