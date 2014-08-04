@@ -14,13 +14,12 @@ class FriendshipsController < ApplicationController
 		@new_friendship = Friendship.new
 		if params[:q]
 			@users = User.search(params[:q]) 
-			@users.delete current_user
+			@users -= [current_user]
 		end
 		
 	end
 
 	def create
-		# binding.pry
 		Friendship.request(current_user, friendship_params[:accepter_id])
 		redirect_to user_path(current_user)
 	end

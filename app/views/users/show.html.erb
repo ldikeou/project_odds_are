@@ -2,7 +2,6 @@
 <!-- twitter bootstrap: grid system, default themes on the left column I need user image, status, about fields and bid button -->
 	<div class="row">
 		<div class="col-md-4">			
-
 			<%= image_tag current_user.profile_pic.url(:medium) %>
 
 			<%= link_to 'Add Friend', new_friendship_path,  class: "btn btn-primary btn-lg" %>
@@ -11,10 +10,15 @@
 			<%= link_to 'Show Bids', bids_path, class: "btn btn-primary btn-lg" %>
 			<input type="text" class="form-control" placeholder="About Me">
 		</div>
+		<% if current_user.friends?(@other_user) %>
 		<div class="col-md-8">
 			<h4>Where the biddies go.</h4>
 			<%= link_to 'Friend Request', edit_friendship_path, class: "btn btn-primary btn-lg" %>
 			<%= link_to 'Friends', friendships_path, class: "btn btn-primary btn-lg" %>
-		</div>
+		</div>	
+		<% else %>
+			<p> You are not friends with <%= @other_user.username %></p>
+		<% end %>
+		
 	</div>
 
