@@ -9,11 +9,12 @@ class BidsController < ApplicationController
 	end
 
 	def new
-		@new_bid = Bid.new
+		@bid = Bid.new(receiver_id: params[:receiver_id])
 		if params[:q]
 			@users = User.search(params[:q]) 
 			@users -= [current_user]
 		end
+
 	end
 
 	def destroy
@@ -39,7 +40,7 @@ class BidsController < ApplicationController
 		# when recip picks number ie recip_guess
 		# when challenger pick number
 		# set sender_id
-		@bid = Bid.find(params[:id])
+		@bid = Bid.find(params[:receiver_id])
 		@bid.update(update_params)
 		if(@bid.recip_guess != nil || @bid.challenger_guess != nil)
 			redirect_to user_path(current_user)
