@@ -14,13 +14,12 @@ class FriendshipsController < ApplicationController
 		@new_friendship = Friendship.new
 		if params[:q]
 			@users = User.search(params[:q]) 
-			# binding.pry
+			@users -= [current_user]
 		end
 		
 	end
 
 	def create
-		# binding.pry
 		Friendship.request(current_user, friendship_params[:accepter_id])
 		redirect_to user_path(current_user)
 	end
@@ -34,7 +33,7 @@ class FriendshipsController < ApplicationController
 	def update
 		f = Friendship.find(params[:id])
 		f.update(status: params[:status])
-		redirect_to friendships_path, notice: "friendshipwas #{params[:status]}"
+		redirect_to friendships_path, notice: "friendship was #{params[:status]}"
 	end
 
 private

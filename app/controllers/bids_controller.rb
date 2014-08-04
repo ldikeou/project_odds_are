@@ -12,6 +12,7 @@ class BidsController < ApplicationController
 		@new_bid = Bid.new
 		if params[:q]
 			@users = User.search(params[:q]) 
+			@users -= [current_user]
 		end
 	end
 

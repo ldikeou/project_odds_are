@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-has_many :friendships, foreign_key: "requester_id"
+has_many :friendships, foreign_key: "requester_id", dependent: :destroy
 # has_many :friends, through: :friendships, class_name: "User"
 has_many :bids
 
@@ -31,6 +31,12 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 			end
 		end
 	end      
+
+
+
+	def friends?(other_user)
+		self.friends.include?(other_user)
+	end
 
 
 end
