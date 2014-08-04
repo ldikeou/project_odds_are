@@ -8,7 +8,7 @@
 
     <%= csrf_meta_tags %>
     
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav class="navbar-inverse navbar-default navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -25,10 +25,10 @@
           <% if user_signed_in? %>
           <ul class="nav navbar-nav">
             <li><%= link_to current_user.username.capitalize, current_user %></li>
-            <li><%= link_to 'Friend Requests', edit_friendship_path(current_user)%></li>
+            
+            <li class="active"><a href="<%= edit_friendship_path(current_user) %>">Friend Request <span class="badge">42</span></a></li>
             <li><%= link_to 'Challenge', new_bid_path(@bid) %></li>
             <li><%= link_to 'Show Bids', bids_path%></li>
-            <li><%= link_to "log out", destroy_user_session_path , method: :delete %></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">

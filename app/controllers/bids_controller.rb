@@ -6,6 +6,7 @@ class BidsController < ApplicationController
 		# bids that either I have sent (my_bids) or others have sent (their_bids)
 		@received_bids = current_user.received_bids.order('updated_at DESC') # current_user.challenged_bids		
 		@sent_bids = current_user.sent_bids.order('updated_at DESC')
+		@number_of_bids = @received_bids.size + @sent_bids.size
 	end
 
 	def new
