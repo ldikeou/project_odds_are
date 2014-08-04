@@ -3,9 +3,9 @@ class BidsController < ApplicationController
  before_action :authenticate_user!
 	
 	def index
-		@bids = Bid.all
-		@new_bid = Bid.new
-
+		# bids that either I have sent (my_bids) or others have sent (their_bids)
+		@my_bids = Bid.where(receiver: current_user)
+		@their_bids = Bid.where(sender: current_user)
 	end
 
 	def new

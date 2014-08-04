@@ -1,6 +1,8 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "home;"
+
 
 /*//= require jquery
 //= require bootstrap-sprockets*/

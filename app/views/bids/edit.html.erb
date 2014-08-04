@@ -1,9 +1,9 @@
 <!-- we want this page to be modular after you recieve the notification -->
-<% if @bid.completion_status != nil %>
+<% if @bid.completion_status == nil %>
 	<%= render 'accept_the_bid' %>	
 <% end %>
 
-<% if @bid.range == nil %>
+<% if @bid.completion_status != nil && @bid.range == nil %>
 	<%= render 'set_range' %>
 <% end %>
 
@@ -15,3 +15,4 @@
 	@bid.challenger_guess == nil %>
 	<%= render 'challenger_guess' %>
 <% end %>
+
