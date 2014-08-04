@@ -1,6 +1,6 @@
 
 <table class="table table-striped">
-  <h1> Challenges For Me <h1>
+  <h2> Received Bids <h2>
   <thead>
     <tr>
       <th>Sender: Challenger</th>
@@ -11,10 +11,13 @@
   </thead>
 
   <tbody>
-    <% @my_bids.each do |bid| %>
+    <% @received_bids.each do |bid| %>
       <tr>
           <td><%= bid.sender.username %></td>
           <td><%= bid.description %></td>
+          <% if  %>
+            
+          <% end %>
           <td><%= bid.completion_status %></td>
           <td><%= link_to 'Edit', edit_bid_path(bid) %></td>
           <td><%= link_to 'Destroy', bid, method: :delete, data: { confirm: 'Are you sure?' } %></td>      
@@ -24,7 +27,7 @@
 </table>  
 
 <table class="table table-striped">
-  <h1> People I Have Challenged! <h1>
+  <h2> Sent Bids <h2>
   <thead>
     <tr>
       <th>Receiver:         </th>
@@ -34,7 +37,7 @@
   </thead>
 
   <tbody>
-    <% @their_bids.each do |bid| %>
+    <% @sent_bids.each do |bid| %>
       <tr>
           <td><%= bid.receiver.username %></td>
           <td><%= bid.description %></td>

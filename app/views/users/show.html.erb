@@ -1,14 +1,8 @@
 	
 <!-- twitter bootstrap: grid system, default themes on the left column I need user image, status, about fields and bid button -->
 	<div class="row">
-		<div class="col-md-4">			
-<<<<<<< HEAD
-			<%= image_tag current_user.profile_pic.url(:medium) %>
-=======
-
+		<div class="col-md-4">	
 			<%= image_tag current_user.profile_pic.url(:medium) %><br>
->>>>>>> 7b3fe551dd2e730e1240f1a4fbe0723300144faf
-
 			<%= link_to 'Add Friend', new_friendship_path,  class: "btn btn-primary btn-lg" %>
 			<h5> Where the legendary status bar will be.</h5><br>
 			<%= link_to 'Make Bid', new_bid_path(@bid), class: "btn btn-primary btn-lg" %>

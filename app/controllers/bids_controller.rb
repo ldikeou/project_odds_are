@@ -4,8 +4,8 @@ class BidsController < ApplicationController
 	
 	def index
 		# bids that either I have sent (my_bids) or others have sent (their_bids)
-		@my_bids = Bid.where(receiver: current_user)
-		@their_bids = Bid.where(sender: current_user)
+		@received_bids = current_user.received_bids.order('updated_at DESC') # current_user.challenged_bids		
+		@sent_bids = current_user.sent_bids.order('updated_at DESC')
 	end
 
 	def new
