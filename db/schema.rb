@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20140803154215) do
   create_table "bids", force: true do |t|
     t.integer  "sender_id"
     t.integer  "receiver_id"
-    t.string   "completion_status"
+    t.string   "completion_status", default: "ready_for_range"
     t.string   "description"
     t.integer  "range"
     t.integer  "recip_guess"

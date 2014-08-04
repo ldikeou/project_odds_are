@@ -3,9 +3,9 @@ class BidsController < ApplicationController
  before_action :authenticate_user!
 	
 	def index
-		@bids = Bid.all
-		@new_bid = Bid.new
-
+		# bids that either I have sent (my_bids) or others have sent (their_bids)
+		@received_bids = current_user.received_bids.order('updated_at DESC') # current_user.challenged_bids		
+		@sent_bids = current_user.sent_bids.order('updated_at DESC')
 	end
 
 	def new
