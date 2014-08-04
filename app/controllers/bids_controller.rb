@@ -53,7 +53,6 @@ class BidsController < ApplicationController
 		@bid = Bid.create(bid_params)
 		@bid.sender_id = current_user.id
 		@bid.save
-		# make notification and send to reciever
 		redirect_to current_user
 	end
 

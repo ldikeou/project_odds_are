@@ -23,7 +23,24 @@
       
       <% if user_signed_in? %>    
         <%= link_to current_user.username.capitalize, current_user %>
-        <%= link_to "log out", destroy_user_session_path , method: :delete %>
+        
+         <ul class="nav navbar-nav navbar-right">
+        
+          <li><%= link_to "EDIT.", edit_user_registration_path %></li> 
+          <li><%= link_to 'Make Bid', new_bid_path(@bid), class: "btn btn-primary btn-lg" %></li>
+          <li><%= link_to "log out", destroy_user_session_path , method: :delete %></li>
+          <li><%= link_to 'Friend Requests', edit_friendship_path(current_user), class: "btn btn-primary btn-lg pull-left" %></li>
+          <li><%= link_to 'Show Bids', bids_path, class: "btn btn-primary btn-lg pull-left" %></li>
+          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul> </li>       
+      </ul>
+      
       <% else %>
         <%= link_to "Login in", user_session_path , method: :post %>
         <%= link_to "Sign up", new_user_registration_path , method: :get %>
@@ -38,21 +55,7 @@
            <% end %>     
          </div>
       
-      <ul class="nav navbar-nav navbar-right">
-      	
-        <li><%= link_to "EDIT.", edit_user_registration_path %></li> 
-        <li><%= link_to 'Make Bid', new_bid_path(@bid), class: "btn btn-primary btn-lg" %></li>
-        <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </li>       
-      </ul>
+     
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

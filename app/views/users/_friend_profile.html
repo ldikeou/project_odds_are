@@ -1,0 +1,1 @@
+<div class= "btn btn-lg"><%= link_to "Send bid to #{User.find(params[:id]).username}", new_bid_path(@bid, receiver_id: params[:id]) , :method => :get%></div>

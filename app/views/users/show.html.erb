@@ -5,23 +5,25 @@
 		<div class="col-md-4">			
 
 			<%= image_tag current_user.profile_pic.url(:medium) %><br>
+		</div>
 
 
-			<%= link_to 'Add Friend', new_friendship_path,  class: "btn btn-primary btn-lg" %>
-			<h5> Where the legendary status bar will be.</h5><br>
-			<%= link_to 'Make Bid', new_bid_path(@bid, receiver_id: params[:id]) , :method => :get%>
 			
-			<%= link_to 'Show Bids', bids_path, class: "btn btn-primary btn-lg" %>
+			<h5> Where the legendary status bar will be.</h5><br>
+			
+			
 			<input type="text" class="form-control" placeholder="About Me">
 		</div>
-		<% if current_user.friends?(@other_user) || current_user.friends == @other_user %>
+		<% if current_user.friends?(@other_user) %> 
+			<%= render 'friend_profile' %>
+		<% elsif current_user == @other_user %>
 		<div class="col-md-8">
 			<h4>Where the biddies go.</h4>
-			<%= link_to 'Friend Requests', edit_friendship_path, class: "btn btn-primary btn-lg" %>
 			<%= link_to 'Friends', friendships_path, class: "btn btn-primary btn-lg" %>
 		</div>	
 		<% else %>
 			<p> You are not friends with <%= @other_user.username %></p>
+			<%= link_to "Add #{@other_user.username}", friendships_path(@friendship, accepter_id: params[:id]), method: :post %>
 		<% end %>
 		
 	</div>
