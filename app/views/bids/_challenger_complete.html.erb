@@ -1,0 +1,7 @@
+<!-- if the recipient still hasn't completed her bid and the completion status is
+complete the bid, there is nothing to show for now -->
+
+<div class="jumbotron">
+	<h3><%= @bid.receiver.username %> is still in the process of completing the bid.<h3>
+	<%= link_to 'Back to Bids', bids_path(@bid), class: "btn btn-info" %>
+</div>

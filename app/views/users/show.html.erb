@@ -1,5 +1,6 @@
 <!-- twitter bootstrap: grid system, default themes on the left column I need user image, status, about fields and bid button -->
 <div class="row">
+
 	<h2 class= "col-md-12 centered"> <%= @other_user.username %></h2>
 </div>
 <div class="row">
@@ -22,6 +23,7 @@
 	<p> You are not friends with <%= @other_user.username %></p>
 	<%= link_to "Add #{@other_user.username}", friendships_path(@friendship, accepter_id: params[:id]), method: :post, class: "btn btn-primary btn-lg" %>
 	<% end %>
+
 	
 </div>
 <div class= "col-md-5"> <%= current_user.username %></div>
