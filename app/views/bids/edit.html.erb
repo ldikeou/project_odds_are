@@ -1,9 +1,9 @@
 <!-- we want this page to be modular after you recieve the notification -->
-<% if @bid.completion_status == nil %>
+<% if @bid.completion_status == "ready_for_range" %>
 	<%= render 'accept_the_bid' %>	
 <% end %>
 
-<% if @bid.completion_status != nil && @bid.range == nil %>
+<% if @bid.completion_status == "accepted" && @bid.range == nil %>
 	<%= render 'set_range' %>
 <% end %>
 
@@ -16,3 +16,29 @@
 	<%= render 'challenger_guess' %>
 <% end %>
 
+<% if @bid.completion_status == "determine_winner" %>
+	<% if current_user.id == @bid.receiver.id %>
+		<%= render 'check_recip_guess' %>
+		<% else %>
+			<%= render 'check_challenger_guess' %>	
+	<% end %>
+<% end %>
+<!-- after the recipient "loses" and has to complete the challenge, this is the 
+page where she will upload the proof that she completed it.  -->
+<!-- the challenger or "winner" will be notified that she is working on it 
+and when she has completed it -->
+<% if @bid.completion_status == "complete_the_challenge" %>
+	<% if current_user.id == @bid.receiver.id %>
+		<%= render 'recip_complete' %>
+		<% else %>
+			<%= render 'challenger_complete' %>
+	<% end %>
+<% end %>
+
+<% if @bid.completion_status == "lost" %>
+	<% if current_user.id == @bid.receiver.id %>
+		<%= render 'recip_complete' %>
+		<% else %>
+			<%= render 'challenger_complete' %>
+	<% end %>
+<% end %>

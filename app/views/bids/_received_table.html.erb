@@ -1,0 +1,33 @@
+
+<table class="table table-striped">
+  <h2> Received Bids <h2>
+  <thead>
+    <tr>
+      <th>Sender: Challenger</th>
+      <th>Challenge Description</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @received_bids.each do |bid| %>
+      <tr>
+          <td><%= bid.sender.username %></td>
+          <td><%= bid.description %></td>
+          <% if bid.completion_status == "ready_for_range" %>
+            <td><%= link_to 'PLAY.',edit_bid_path(bid), class: "btn btn-success" %></td>       
+            <% elsif bid.completion_status == "ready_for_challenger" %>
+              <td>Waiting for Challenger</td>
+            <% elsif bid.completion_status == "determine_winner" %>
+              <td><%= link_to 'Results.',edit_bid_path(bid), class: "btn btn-success" %></td>           
+            <% elsif bid.completion_status == "complete_the_challenge" %>
+              <td><%= link_to 'Lets get LEGEND.',edit_bid_path(bid), class: "btn btn-danger" %></td>           
+            <% elsif bid.completion_status == "lost" %>
+              <td><%= link_to 'You WON! no need to complete.',edit_bid_path(bid), class: "btn btn-danger" %></td>
+          <% end %>
+          <td><%= link_to 'Destroy', bid, method: :delete, data: { confirm: 'Are you sure?' } %></td>      
+      </tr>
+    <% end %>
+  </tbody>
+</table>  

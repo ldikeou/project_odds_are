@@ -1,46 +1,23 @@
+<% if Bid.all != [] %>
+  <% if @received_bids.empty? %>
+    <div class="jumbotron">
+      <h3>No bids have been received.<h3>
+    </div>
+   <% else %>
+    <%= render 'received_table' %> 
+  <% end %>
+  <% if @sent_bids.empty? %>
+    <div class="jumbotron">
+      <h3>No bids have been sent.<h3>
+    </div>
+    <% else %>
+      <%= render 'sent_table' %>  
+  <% end %>
+  <% else %>
+    <div class="jumbotron">
+      <h1>You have 0 bids. Do Better.<h1>
+    </div>  
+<% end %>
 
-<table class="table table-striped">
-  <h2> Received Bids <h2>
-  <thead>
-    <tr>
-      <th>Sender: Challenger</th>
-      <th>Challenge Description</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @received_bids.each do |bid| %>
-      <tr>
-          <td><%= bid.sender.username %></td>
-          <td><%= bid.description %></td>
-          <td><%= bid.completion_status %></td>
-          <td><%= link_to 'Edit', edit_bid_path(bid) %></td>
-          <td><%= link_to 'Destroy', bid, method: :delete, data: { confirm: 'Are you sure?' } %></td>      
-      </tr>
-    <% end %>
-  </tbody>
-</table>  
 
-<table class="table table-striped">
-  <h2> Sent Bids <h2>
-  <thead>
-    <tr>
-      <th>Receiver:         </th>
-      <th>Challenge Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @sent_bids.each do |bid| %>
-      <tr>
-          <td><%= bid.receiver.username %></td>
-          <td><%= bid.description %></td>
-          <td><%= link_to 'Edit', edit_bid_path(bid) %></td>
-          <td><%= link_to 'Destroy', bid, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
-      </tr>
-    <% end %>
-  </tbody>
-</table> 

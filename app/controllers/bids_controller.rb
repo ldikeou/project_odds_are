@@ -40,13 +40,14 @@ class BidsController < ApplicationController
 		# when recip picks number ie recip_guess
 		# when challenger pick number
 		# set sender_id
-		@bid = Bid.find(params[:receiver_id])
+		@bid = Bid.find(params[:id])
 		@bid.update(update_params)
 		if(@bid.recip_guess != nil || @bid.challenger_guess != nil)
-			redirect_to user_path(current_user)
+			redirect_to bids_path
 		else
 			redirect_to edit_bid_path
 		end
+
 	end
 
 	def create
@@ -73,7 +74,7 @@ private
 		if params[:completion_status]
 			{completion_status: params[:completion_status]}		
 		else
-			params.require(:bid).permit(:range, :recip_guess, :challenger_guess)
+			params.require(:bid).permit(:range, :recip_guess, :challenger_guess, :completion_status)
 		end
 	end
 
