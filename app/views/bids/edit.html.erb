@@ -1,10 +1,17 @@
 <!-- we want this page to be modular after you recieve the notification -->
-<div class="container text-center">
-	
-	<h1>Congrats <%= @bid.sender.username %> has challenged you!<h1>
-	
-	<%= image_tag "legends.png" %> <br>
+<% if @bid.completion_status != nil %>
+	<%= render 'accept_the_bid' %>	
+<% end %>
 
-	<%= link_to 'Accept & be legendary', bid_path(@bid, completion_status: "ready_for_range"), method: "PATCH", class: "btn btn-primary btn-lg" %>
-	<%= link_to 'You are a PU$$Y.', bid_path(@bid, completion_status: "declined"), method: "PATCH", class: "btn btn-primary btn-lg" %>
-</div>
+<% if @bid.range == nil %>
+	<%= render 'set_range' %>
+<% end %>
+
+<% if @bid.range != nil && @bid.range.to_i.to_s && @bid.recip_guess == nil %>
+	<%= render 'recip_guess' %>
+<% end %>
+
+<% if @bid.range != nil && @bid.range.to_i.to_s && @bid.recip_guess != nil &&
+	@bid.challenger_guess == nil %>
+	<%= render 'challenger_guess' %>
+<% end %>
