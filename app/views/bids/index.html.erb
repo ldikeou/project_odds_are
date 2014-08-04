@@ -15,9 +15,6 @@
       <tr>
           <td><%= bid.sender.username %></td>
           <td><%= bid.description %></td>
-          <% if  %>
-            
-          <% end %>
           <td><%= bid.completion_status %></td>
           <td><%= link_to 'Edit', edit_bid_path(bid) %></td>
           <td><%= link_to 'Destroy', bid, method: :delete, data: { confirm: 'Are you sure?' } %></td>      

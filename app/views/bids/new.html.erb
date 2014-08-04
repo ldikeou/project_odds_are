@@ -15,7 +15,7 @@
 	
 	<!-- creates the text area for the challenge -->
 	<%= form_for @bid do |f| %>	
-		<%= f.label :description, "What is the challenge" %>
+		<%= f.label :description, "What is the challenge for" %>
 		<% if @users %>
 			<%= f.select(:receiver_id, options_for_select(@users.map {|user| [user.username, user.id]})) %><br>
 				<!-- do select_tag, pass in options_for_select, pass  here -->

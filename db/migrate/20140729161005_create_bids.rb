@@ -3,7 +3,7 @@ class CreateBids < ActiveRecord::Migration
     create_table :bids do |t|
       t.integer :sender_id
       t.integer :reciever_id
-      t.string :completion_status
+      t.string :completion_status, :default => "ready_for_range"
       t.string :description
       t.integer :range
       t.integer :recip_guess
