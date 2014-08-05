@@ -22,6 +22,10 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 		where( "first_name like ?", search_condition)
 	end
 
+	def search(query)
+		friends.select {|f| f.first_name.include?(query) }
+	end
+		
 	def friends
 		friendships = Friendship.where(Friendship.arel_table[:requester_id].eq(id).or(
 			Friendship.arel_table[:accepter_id].eq(id))
@@ -35,11 +39,28 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 		end
 	end      
 
+	def pending_friendships
+		friendships = Friendship.where(Friendship.arel_table[:requester_id].eq(id).or(
+			Friendship.arel_table[:accepter_id].eq(id))
+		).where(Friendship.arel_table[:status].eq("pending"))
+		friendships.map do |friendship|
+			if friendship.requester_id == id
+				friendship.accepter
+			else
+				friendship.requester
+			end
+		end
+	end
 
 
 	def friends?(other_user)
 		self.friends.include?(other_user)
 	end
+
+	def pending_friends?(other_user)
+		self.pending_friendships.include?(other_user)
+	end
+
 
 
 end

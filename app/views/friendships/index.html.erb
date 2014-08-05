@@ -1,5 +1,5 @@
 <% @friends.each do |f| %>
-	<p><%= f.username %> <%= link_to 'delete friend', friendship_path(f), {:method => :delete}  %></p>
+	<p><%= link_to f.username, user_path(f) %><br> <%= link_to 'delete friend', friendship_path(f), {:method => :delete}  %></p><br><br>
 <% end %>
 
 <%= link_to 'Add Friends', new_friendship_path,  class: "btn btn-primary btn-lg" %>
