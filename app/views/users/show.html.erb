@@ -20,7 +20,7 @@
 	<% else %>
 	<p> You are not friends with <%= @other_user.username %></p>
 	<% if current_user.pending_friends?(@other_user) %>
-	<%= link_to "Friendship with #{@other_user.username} pending", friendships_path(@other_user), method: :get, class: "btn btn-primary btn-lg" %>
+	<%= link_to "Friendship with #{@other_user.username} pending", user_path(@other_user), method: :get, class: "btn btn-primary btn-lg" %>
 	<% else %>
 	<%= link_to "Add #{@other_user.username}", friendships_path(@friendship, accepter_id: params[:id]), method: :post, class: "btn btn-primary btn-lg" %>
 
