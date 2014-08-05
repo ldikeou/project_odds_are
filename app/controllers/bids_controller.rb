@@ -38,6 +38,7 @@ class BidsController < ApplicationController
 		# when recip picks number ie recip_guess
 		# when challenger pick number
 		# set sender_id
+		# binding.pry
 		@bid = Bid.find(params[:id])
 		@bid.update(update_params)
 		if(@bid.recip_guess != nil || @bid.challenger_guess != nil)

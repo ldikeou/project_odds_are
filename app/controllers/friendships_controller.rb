@@ -2,8 +2,8 @@ class FriendshipsController < ApplicationController
 
 
 	def index
-		@friends= User.find_by_id(params[:format]).friends
-		@friend_id=params[:format]
+		@friends = User.find(params[:id]).friends
+		@friend_id=params[:id]
 	end
 
 
@@ -34,7 +34,7 @@ class FriendshipsController < ApplicationController
 	def update
 		f = Friendship.find(params[:id])
 		f.update(status: params[:status])
-		redirect_to friendships_path, notice: "friendship was #{params[:status]}"
+		redirect_to friendships_path(params: {id: params[:id]}), notice: "friendship was #{params[:status]}"
 	end
 
 private

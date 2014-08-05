@@ -1,6 +1,8 @@
 class Bid < ActiveRecord::Base
 	belongs_to :sender, :class_name => 'User'
 	belongs_to :receiver, :class_name => 'User'
+
+	validate :receiver_id, :sender_id, presence: true
 	
   	has_attached_file :bid_complete, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   	validates_attachment_content_type :bid_complete, :content_type => /\Aimage\/.*\Z/
