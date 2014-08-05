@@ -1,7 +1,12 @@
 /*background-image:url('/images/storm_moon.jpg');*/
 
-.home_title {
-	color: white;
+.homes_index{
+	background-color: black;
+	
+}
+
+
+#home_title {
 	margin-left: auto;
     margin-right: auto;
     padding-top: 40px;
@@ -19,4 +24,8 @@
 	font-size: 25px;
 	padding-left: 35%;
 	letter-spacing: .001em;
+}
+
+#emmet {
+	padding-left: 95%;
 }
