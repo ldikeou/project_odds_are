@@ -61,6 +61,8 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 		self.pending_friendships.include?(other_user)
 	end
 
-
+	def accepted_notifications
+		friendships.joins(:friendship_notifications).where("notifications.status = 'unread'").map(&:notifications)
+	end
 
 end

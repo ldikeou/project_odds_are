@@ -1,9 +1,9 @@
 class FriendshipsController < ApplicationController
-
+	before_action :authenticate_user!
 
 	def index
-		@friends= User.find_by_id(params[:format]).friends
-		@friend_id=params[:format]
+		@friends = User.find_by_id(params[:format]).friends
+		@friend_id =params[:format]
 	end
 
 
@@ -34,6 +34,9 @@ class FriendshipsController < ApplicationController
 	def update
 		f = Friendship.find(params[:id])
 		f.update(status: params[:status])
+		if f.status == "accepted" 
+			f.friendship_notifications.create(status: "unread", message: "#{f.accepter_id} has accepted your friend request")
+		end
 		redirect_to friendships_path, notice: "friendship was #{params[:status]}"
 	end
 

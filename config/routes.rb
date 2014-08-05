@@ -6,6 +6,7 @@ Rails.application.routes.draw do
  
   resources :bids
   resources :friendships
+  resources :notifications
 
   get "search/:action" => "search#:action" , as: :search_path
 

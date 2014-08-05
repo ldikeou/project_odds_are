@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140803154215) do
+ActiveRecord::Schema.define(version: 20140805195739) do
 
   create_table "bids", force: true do |t|
     t.integer  "sender_id"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 20140803154215) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "notifications", force: true do |t|
+    t.integer "notifiable_id"
+    t.string  "notifiable_type"
+    t.string  "type"
+    t.string  "status"
+    t.string  "message"
   end
 
   create_table "users", force: true do |t|

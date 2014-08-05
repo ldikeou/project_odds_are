@@ -1,6 +1,6 @@
-class BidNotification < ActiveRecord::Base
+class Bid_Notification < Notification
 
-	def create
-	end
+
+
 
 end
