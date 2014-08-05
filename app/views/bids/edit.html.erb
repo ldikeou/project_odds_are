@@ -17,10 +17,11 @@
 <% end %>
 
 <% if @bid.completion_status == "determine_winner" %>
+
 	<% if current_user.id == @bid.receiver.id %>
 		<%= render 'check_recip_guess' %>
 		<% else %>
-			<%= render 'check_challenger_guess' %>	
+			<%= render 'challenger_guess' %>	
 	<% end %>
 <% end %>
 <!-- after the recipient "loses" and has to complete the challenge, this is the 
@@ -34,11 +35,21 @@ and when she has completed it -->
 			<%= render 'challenger_complete' %>
 	<% end %>
 <% end %>
-
+<!-- the challenger wins and the recipient has to complete the bid -->
 <% if @bid.completion_status == "lost" %>
 	<% if current_user.id == @bid.receiver.id %>
-		<%= render 'recip_complete' %>
+		<%= render 'recip_lost' %>
 		<% else %>
-			<%= render 'challenger_complete' %>
+			<%= render 'challenger_lost' %>
 	<% end %>
 <% end %>
+
+<!-- after the recip has completed the challenge the recip and the challenger are 
+notified and are directed to the show page!-->
+<% if @bid.completion_status == "completed" %>
+	<%=  redirect_to bid_path(@bid) %>
+<% end %>
+
+
+
+

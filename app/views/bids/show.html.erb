@@ -1,11 +1,20 @@
-
-
+<h1>Hi MICAH</h1>
 <div class="jumbotron">
-  <h1>Odds Are...</h1>
-  <h3><%= @bid.description %></h3>
-  <%= form_for @bid do |b|%> 
-    <%= b.number_field :range, :in => 0..100, :step => '1' %>
-    <p> Set Range </p>
-  <%end%>
+	<h2><%= @bid.receiver.username %> has completed <%= @bid.description %></h2>
+	<% if @bid.bid_complete.present? %>
+		<%= image_tag @bid.bid_complete.url(:medium) %><br>
+		<%= link_to "Back to Bids", bids_path, class: "btn btn-info" %>
+	<% else %>
+		<%= form_for @bid do |f| %>
+			<%= f.label :bid_complete %><br />
+		  	<%= f.file_field :bid_complete %>
+		  	<%= f.submit %>
+		  	<%= hidden_field_tag :redirect_to, bid_path(@bid) %>
+		<% end %>
+		<% if @bid.bid_complete.present? %>
+			<%= hidden_field :completion_status, :value => "completed" %>		
+		<% end %>
+		<%= link_to "If not ready to complete", bids_path, class: "btn btn-info" %>
+	<% end %>
+	
 </div>
-

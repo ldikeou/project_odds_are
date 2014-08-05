@@ -1,5 +1,6 @@
 <div class="jumbotron">
-	<h1> You lost! Unfortunately <%= @bid.receiver.username %> won't perform the challenge <h1>
+	<h3><%= @bid.receiver.username %> doesn't need to complete the bid. CRI.<h3>
+	<h1>Lucy cries every time.<h1><%= image_tag "lucy.jpg", :width => 250, :height => 250 %><br>
 	<%= link_to 'Go back to Profile', current_user, class: "btn btn-info" %>
 	<%= link_to 'Go back to Bids', bids_path, class: "btn btn-info" %>
 </div>

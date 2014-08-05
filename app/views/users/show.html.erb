@@ -1,4 +1,5 @@
 <!-- twitter bootstrap: grid system, default themes on the left column I need user image, status, about fields and bid button -->
+<%= image_tag "lucy4.png", id: "profile_background" %>
 <div class="row">
 	<h2 class= "col-md-12 centered"> <%= @other_user.username %></h2>
 </div>
@@ -15,7 +16,7 @@
 	<% elsif current_user == @other_user %>
 	<div class="col-md-8">
 		<h4>Where the biddies go.</h4>
-		<%= link_to 'My Friends', friendships_path(params[:id]), class: "btn btn-primary btn-lg" %>
+		<%= link_to 'My Friends', friendships_path(params: {id: params[:id]}), class: "btn btn-primary btn-lg" %>
 	</div>
 	<% else %>
 	<p> You are not friends with <%= @other_user.username %></p>
