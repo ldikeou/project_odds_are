@@ -1,0 +1,4 @@
+<% @an.each do |notification| %>
+	<p><%= link_to "#{notification.body}", notification_path(notification), {:method => :get}   %> </p>
+
+<% end %>

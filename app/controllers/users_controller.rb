@@ -14,6 +14,8 @@ class UsersController < ApplicationController
 
 	 def show
 	 	@other_user = User.find(params[:id])
+	 	
+
 	 	# return redirect_to new_friendship_path unless 
 	 end
 

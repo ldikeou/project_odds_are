@@ -1,6 +1,7 @@
 class Bid < ActiveRecord::Base
 	belongs_to :sender, :class_name => 'User'
 	belongs_to :receiver, :class_name => 'User'
+	has_many :bid_notifications, as: :notifiable
 
 	validate :receiver_id, :sender_id, presence: true
 	
