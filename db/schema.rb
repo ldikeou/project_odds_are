@@ -11,18 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140803154215) do
+ActiveRecord::Schema.define(version: 20140805145134) do
 
   create_table "bids", force: true do |t|
     t.integer  "sender_id"
     t.integer  "receiver_id"
-    t.string   "completion_status", default: "ready_for_range"
+    t.string   "completion_status",         default: "ready_for_range"
     t.string   "description"
     t.integer  "range"
     t.integer  "recip_guess"
     t.integer  "challenger_guess"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "bid_complete_file_name"
+    t.string   "bid_complete_content_type"
+    t.integer  "bid_complete_file_size"
+    t.datetime "bid_complete_updated_at"
   end
 
   create_table "friendships", force: true do |t|

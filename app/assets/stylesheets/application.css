@@ -35,7 +35,11 @@ table {
 th, td {
 	width: 350px;
 }
-
+#nav_font{
+	font-family: 'Josefin Slab', serif;
+	font-size: 18px;
+	letter-spacing: .07em;
+}
 .bg-img {
 	position: fixed; left:0; top:0;
 	background-size: contain;
@@ -49,7 +53,6 @@ th, td {
 #nav_logo {
 	font-family: 'Josefin Slab', serif;
 	font-size: 25px;
-	
 	letter-spacing: .07em;
 }
 

@@ -22,7 +22,7 @@
             <% elsif bid.completion_status == "determine_winner" %>
               <td><%= link_to 'Results.',edit_bid_path(bid), class: "btn btn-success" %></td>           
             <% elsif bid.completion_status == "complete_the_challenge" %>
-              <td><%= link_to 'Lets get LEGEND.',edit_bid_path(bid), class: "btn btn-danger" %></td>           
+              <td><%= link_to 'Complete your bid pu$$y.',edit_bid_path(bid), class: "btn btn-danger" %></td>           
             <% elsif bid.completion_status == "lost" %>
               <td><%= link_to 'You WON! no need to complete.',edit_bid_path(bid), class: "btn btn-danger" %></td>
           <% end %>

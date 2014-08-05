@@ -1,5 +1,7 @@
 <div class="jumbotron">
 	<h1> Complete your bid here! <h1>
-	<%= link_to 'Go back to Profile', current_user, class: "btn btn-info" %>
-	<%= link_to 'Go back to Bids', bids_path, class: "btn btn-info" %>
+	<%= image_tag "lucy3.png" %>
+	<%= link_to 'Bid Submission', bid_path(@bid, completion_status: "completed", redirect_to: bid_path(@bid)), method: "PATCH", class: "btn btn-warning"%>	
+	<%= link_to 'Back to Profile', current_user, class: "btn btn-info" %>
+	<%= link_to 'Back to Bids', bids_path, class: "btn btn-info" %>
 </div>

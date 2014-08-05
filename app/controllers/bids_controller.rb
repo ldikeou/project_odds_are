@@ -15,7 +15,6 @@ class BidsController < ApplicationController
 			@users = User.search(params[:q]) 
 			@users -= [current_user]
 		end
-
 	end
 
 	def destroy
@@ -31,7 +30,6 @@ class BidsController < ApplicationController
 
 	def show
 		@bid = Bid.find(params[:id])
-		# redirect_to board(range)
 	end
 
 
@@ -44,7 +42,11 @@ class BidsController < ApplicationController
 		@bid = Bid.find(params[:id])
 		@bid.update(update_params)
 		if(@bid.recip_guess != nil || @bid.challenger_guess != nil)
-			redirect_to bids_path
+			if params[:redirect_to]
+				redirect_to params[:redirect_to]
+			else
+				redirect_to bids_path
+			end
 		else
 			redirect_to edit_bid_path
 		end
@@ -74,7 +76,8 @@ private
 		if params[:completion_status]
 			{completion_status: params[:completion_status]}		
 		else
-			params.require(:bid).permit(:range, :recip_guess, :challenger_guess, :completion_status)
+			params.require(:bid).permit(:range, :recip_guess, :challenger_guess, 
+				:completion_status, :bid_complete)
 		end
 	end
 
