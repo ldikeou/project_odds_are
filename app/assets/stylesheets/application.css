@@ -19,10 +19,12 @@
 
 
 body { 
-	padding-top: 150px; 
+	padding-top: 100px; 
+
 }
 body.homes_index{
 	background-color: black;
+	padding-top: 150px; 
 }
 
 table {

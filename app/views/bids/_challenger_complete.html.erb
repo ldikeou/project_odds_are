@@ -2,6 +2,7 @@
 complete the bid, there is nothing to show for now -->
 
 <div class="jumbotron">
-	<h3><%= @bid.receiver.username %> is still in the process of completing the bid.<h3>
+	<h3><%= @bid.receiver.username %> doesn't need to complete the bid. CRI.<h3>
+	<h1>Lucy cries every time.<h1><%= image_tag "lucy.jpg", :width => 250, :height => 250 %><br>
 	<%= link_to 'Back to Bids', bids_path(@bid), class: "btn btn-info" %>
 </div>
