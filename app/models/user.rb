@@ -22,6 +22,10 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 		where( "first_name like ?", search_condition)
 	end
 
+	def search(query)
+		friends.select {|f| f.first_name.include?(query) }
+	end
+
 	def friends
 		friendships = Friendship.where(Friendship.arel_table[:requester_id].eq(id).or(
 			Friendship.arel_table[:accepter_id].eq(id))

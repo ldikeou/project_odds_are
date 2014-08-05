@@ -12,8 +12,7 @@ class BidsController < ApplicationController
 	def new
 		@bid = Bid.new(receiver_id: params[:receiver_id])
 		if params[:q]
-			@users = User.search(params[:q]) 
-			@users -= [current_user]
+			@users = current_user.search(params[:q])
 		end
 
 	end

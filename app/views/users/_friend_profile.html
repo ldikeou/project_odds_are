@@ -1,1 +1,3 @@
-<div class= "btn btn-lg"><%= link_to "Send bid to #{User.find(params[:id]).username}", new_bid_path(@bid, receiver_id: params[:id]) , :method => :get%></div>
+<%= link_to "Send bid to #{User.find(params[:id]).username}", new_bid_path(@bid, receiver_id: params[:id]) , :method => :get, class: "btn btn-primary btn-lg"%>
+
+<%= link_to "#{User.find(params[:id]).username}'s Friends", friendships_path(params[:id]), class: "btn btn-primary btn-lg" %>

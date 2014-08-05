@@ -17,7 +17,7 @@
 	<% elsif current_user == @other_user %>
 	<div class="col-md-8">
 		<h4>Where the biddies go.</h4>
-		<%= link_to 'Friends', friendships_path, class: "btn btn-primary btn-lg" %>
+		<%= link_to 'My Friends', friendships_path(params[:id]), class: "btn btn-primary btn-lg" %>
 	</div>
 	<% else %>
 	<p> You are not friends with <%= @other_user.username %></p>

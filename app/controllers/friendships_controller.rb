@@ -2,7 +2,8 @@ class FriendshipsController < ApplicationController
 
 
 	def index
-		@friends= current_user.friends
+		@friends= User.find_by_id(params[:format]).friends
+		@friend_id=params[:format]
 	end
 
 
