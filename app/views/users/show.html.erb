@@ -1,19 +1,17 @@
 <!-- twitter bootstrap: grid system, default themes on the left column I need user image, status, about fields and bid button -->
 <div class="row">
-
 	<h2 class= "col-md-12 centered"> <%= @other_user.username %></h2>
 </div>
 <div class="row">
 	<div class="col-md-4">
 		<%= image_tag current_user.profile_pic.url(:medium) %><br>
 		
-		<h5> Where the legendary status bar will be.</h5><br>
-		
-		
+		<h5> Where the legendary status bar will be.</h5><br>		
 		<input type="text" class="form-control" placeholder="About Me">
 	</div>
 	<% if current_user.friends?(@other_user) %>
-	<%= render 'friend_profile'%>
+		<%= render 'friend_profile' %>
+
 	<% elsif current_user == @other_user %>
 	<div class="col-md-8">
 		<h4>Where the biddies go.</h4>
@@ -25,9 +23,10 @@
 	<%= link_to "Friendship with #{@other_user.username} pending", friendships_path(@other_user), method: :get, class: "btn btn-primary btn-lg" %>
 	<% else %>
 	<%= link_to "Add #{@other_user.username}", friendships_path(@friendship, accepter_id: params[:id]), method: :post, class: "btn btn-primary btn-lg" %>
+
 	<% end %>
 	<% end %>
 
-	
+
 </div>
 <div class= "col-md-5"> <%= current_user.username %></div>
