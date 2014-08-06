@@ -1,0 +1,3 @@
+<% @users.each do |user| %>
+	<%= link_to user.username, "#", id: user.id, class: "select_receiver_link" %>
+<% end %>

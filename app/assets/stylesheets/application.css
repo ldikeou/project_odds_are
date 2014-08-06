@@ -20,7 +20,23 @@
 #nav_search_bar_yes{
 	margin-left: -15%
 }
+.btn-black{
+color: #fff;
+background-color: black;
+}
 
+.btn-black:disabled{
+	background-color: #aaa;
+}
+
+#profile_background{
+	position: fixed; left:0; top:0;
+	z-index: -100;
+	/*height: 100%;
+	width: 100%;
+	width: auto; height: auto;*/
+	background-repeat: repeat-x;
+}
 
 body { 
 	padding-top: 75px; 
