@@ -19,7 +19,7 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 
 	def self.search(query)
 		search_condition = "%" + query + "%"
-		where( "first_name like ?", search_condition)
+		where( "first_name LIKE ?", search_condition)
 	end
 
 	def search(query)

@@ -9,15 +9,15 @@
 		<% end %>
 	</div>
 	<% else %>
-	<p>Send bid to <%= "#{User.find(@bid.receiver_id).username}" %></p>
+		<p>Send bid to <%= "#{User.find(@bid.receiver_id).username}" %></p>
 	<% end %>
 	
 	<!-- creates the text area for the challenge -->
 	<%= form_for @bid do |f| %>
 	<%= f.label :description, "What is the challenge for" %>
 	<% if @users %>
-	<%= f.select(:receiver_id, options_for_select(@users.map {|user| [user.username, user.id]})) %><br>
-	<!-- do select_tag, pass in options_for_select, pass  here -->
+		<%= f.select(:receiver_id, options_for_select(@users.map {|user| [user.username, user.id]})) %><br>
+	<!-- do select_tag, pass in options_for_select, pass  here --> 
 	<% else %>
 	<input type="hidden" id="user_token" name="bid[receiver_id]" value="<%= @bid.receiver_id %>" />
 	<% end %>
