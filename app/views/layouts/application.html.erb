@@ -24,6 +24,7 @@
           <div class="collapse navbar-collapse" id="nav_font">
             <% if user_signed_in? %>
             <ul class="nav navbar-nav">
+              <li id ="nav_pic"><%= image_tag current_user.profile_pic.url(:thumb) %></li>
               <li><%= link_to current_user.username.capitalize, current_user %></li>
               <li class="active"><a href="<%= edit_friendship_path(current_user) %>">Friend Request <span class="badge">42</span></a></li>
               <li><%= link_to 'Challenge', new_bid_path(@bid) %></li>
@@ -39,7 +40,7 @@
                 </ul>
               </li>
             </ul>
-            <div class="form-group">
+            <div class="form-group", id="nav_search_bar_yes">
               <%= form_tag(users_path, method: "get", class: "navbar-form navbar-right") do %>
               <%= text_field_tag :q, params[:q], placeholder: "Search" , class: "form-control" %>
               <% end %>

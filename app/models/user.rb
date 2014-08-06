@@ -10,10 +10,11 @@ has_many :received_friendships, foreign_key: "accepter_id", dependent: :destroy,
 has_many :sent_bids, foreign_key: :sender_id, class_name: "Bid"
 has_many :received_bids, foreign_key: :receiver_id, class_name: "Bid"
 
+has_many :activities
 # current_user.challenged_bids
 
 
-has_attached_file :profile_pic, :styles => { :medium => "300x300>", :thumb => "100x100>" }, 
+has_attached_file :profile_pic, :styles => { :medium => "300x300>", :thumb => "40x40#" }, 
 	:default_url => "default.png"
 validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 
@@ -100,7 +101,15 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 		notifications = requested_notifications + accepted_notifications
 	end
 
-
+	def create_activity(item, action)
+		# scoped automatically to the user instance
+		activity activities.new
+		activity.targetable = item
+		activity.action = action
+		activity.save
+		# returns the actual activity instance instead of the true or false
+		activity
+	end
 
 	
 end

@@ -3,10 +3,10 @@
 	<!-- creates the search bar that will eventually search the friends -->
 	<% if  @bid.receiver_id == nil%>
 	<div class="form-group">
-		<%= form_tag(new_bid_path, method: "get") do %>
+	<%= form_tag(new_bid_path, method: "get") do %>
 		<%= label_tag(:q, "Search a friend to challenge:") %>
 		<%= text_field_tag(:q) %>
-		<% end %>
+	<% end %>
 	</div>
 	<% else %>
 		<p>Send bid to <%= "#{User.find(@bid.receiver_id).username}" %></p>
