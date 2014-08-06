@@ -1,0 +1,10 @@
+<!-- i want a new jumbotron for each bid -->
+
+<% @bids.each do |bid| %>
+	<div class="jumbotron">
+		<h3><%= bid.receiver.username %> has completed...<%= bid.description%></h3>
+		<%= image_tag bid.bid_complete.url(:medium) %>
+	</div>
+
+<% end %>
+

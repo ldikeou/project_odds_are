@@ -13,6 +13,9 @@ class UsersController < ApplicationController
 	 end
 
 	 def show
+	 	# i want all the bids that the user whose profile we are 
+	 	# looking is associated receiver or challenger with and whose status is completed
+	 	@bids = current_user.bids.where(completion_status: "completed").order('updated_at DESC')
 	 	@other_user = User.find(params[:id])
 	 	
 

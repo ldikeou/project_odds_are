@@ -26,15 +26,17 @@ body {
 	padding-top: 75px; 
 
 }
-.nav_pic{
-	padding-top: 5px;
+
+#nav_pic {
+	padding-top-bottom: 3px;
 	display: inline;
 	border:2px solid black;
-	-webkit-border-radius: 20px;
-	-moz-border-radius: 20px;
-	border-radius: 20px;
-
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
 }
+
+
 
 table {
 	table-layout: fixed;

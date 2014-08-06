@@ -14,8 +14,9 @@ has_many :activities
 # current_user.challenged_bids
 
 
-has_attached_file :profile_pic, :styles => { :medium => "300x300>", :thumb => "40x40#" }, 
-	:default_url => "default.png"
+has_attached_file :profile_pic, :styles => { :medium => "300x300>", :thumb => "45x45#" }, 
+	:default_url => ":style/default.png"
+	# have thumb/default and medium/default
 validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 
 
@@ -26,6 +27,12 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 		t = Friendship.arel_table
 		Friendship.where(t[:requester_id].eq(id).or(t[:accepter_id].eq(id)))
 	end
+
+	def bids
+		t = Bid.arel_table
+		Bid.where(t[:sender_id].eq(id).or(t[:receiver_id].eq(id)))
+	end
+
 
 	def self.search(query)
 		search_condition = "%" + query + "%"

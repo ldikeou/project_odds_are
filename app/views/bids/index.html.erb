@@ -1,5 +1,5 @@
 
-<% if Bid.all != [] %>
+<% if Bid.all.any? %>
   <% if @received_bids.empty? %>
     <div class="jumbotron">
       <h3>No bids have been received.<h3>
