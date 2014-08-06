@@ -56,6 +56,9 @@ class BidsController < ApplicationController
 		@bid = Bid.create(bid_params)
 		@bid.sender_id = current_user.id
 		@bid.save
+		if @bid.completion_status == "ready_for_range"
+			@bid.bid_notifications.create(status: "unread", message: "#{User.find(@bid.sender_id).first_name} has sent you a bid")
+		end
 		redirect_to current_user
 	end
 

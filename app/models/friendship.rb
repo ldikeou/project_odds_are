@@ -11,7 +11,7 @@ class Friendship < ActiveRecord::Base
 		friendship = Friendship.where(requester: requester, accepter: accepter).first_or_create do |f|
 			f.status = "pending"
 		end
-		frienship.friendship_notifications.create(status: "unread", message: "#{requester} sent you a friend request")
+		frienship.friendship_notifications.create(status: "unread", message: "#{requester.username} sent you a friend request")
 	end
 
 

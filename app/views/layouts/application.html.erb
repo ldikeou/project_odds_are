@@ -25,7 +25,6 @@
             <% if user_signed_in? %>
             <ul class="nav navbar-nav">
               <li><%= link_to current_user.username.capitalize, current_user %></li>
-              
               <li class="active"><a href="<%= edit_friendship_path(current_user) %>">Friend Request <span class="badge">42</span></a></li>
               <li><%= link_to 'Challenge', new_bid_path(@bid) %></li>
               <li><%= link_to 'Show Bids', bids_path%></li>
@@ -62,6 +61,5 @@
         <% end %>
         <%= yield %>
       </div>
-      
     </body>
   </html>

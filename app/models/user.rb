@@ -18,8 +18,12 @@ has_attached_file :profile_pic, :styles => { :medium => "300x300>", :thumb => "1
 validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 
 
+	#  SELECT "friendships".* FROM "friendships"  
+	#    WHERE "friendships"."requester_id" = ? 
+	#      or "friendships"."accepter_id" = ?  [["requester_id", 2], ["accepter_id", 2]]
 	def friendships
-		sent_friendships + received_friendships
+		t = Friendship.arel_table
+		Friendship.where(t[:requester_id].eq(id).or(t[:accepter_id].eq(id)))
 	end
 
 	def self.search(query)
@@ -67,9 +71,9 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 	end
 
 	def accepted_notifications
-		friendshipsm = sent_friendships.where(status: "accepted")
+		friendships = sent_friendships.where(status: "accepted")
 		notifications = []
-		friendshipsm.each do |friendship|
+		friendships.each do |friendship|
 			friendship.friendship_notifications.each do |notification|
 				if notification.status == "unread"
 					notifications << notification
@@ -78,5 +82,25 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 		end
 		notifications
 	end
+
+	def requested_notifications
+		friendships = received_friendships.where(status: "pending")
+		notifications = []
+		friendships.each do |friendship|
+			friendship.friendship_notifications.each do |notification|
+				if notification.status == "unread"
+					notifications << notification
+				end
+			end
+		end
+		notifications
+	end
+
+	def notifications
+		notifications = requested_notifications + accepted_notifications
+	end
+
+
+
 	
 end

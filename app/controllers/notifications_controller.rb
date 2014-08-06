@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
 
 
 	def index
-		@an= current_user.accepted_notifications
+		@notifications= current_user.notifications
 	end
 
 	def show

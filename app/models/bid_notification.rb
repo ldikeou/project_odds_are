@@ -1,6 +1,3 @@
-class Bid_Notification < Notification
-
-
-
+class BidNotification < Notification
 
 end

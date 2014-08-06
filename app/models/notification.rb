@@ -4,6 +4,4 @@ class Notification < ActiveRecord::Base
 	def accepted
 		where(status: "accepted")
 	end
-
-
 end
