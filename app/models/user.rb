@@ -27,12 +27,14 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 	end
 
 	def self.search(query)
+		return all unless query
 		search_condition = "%" + query + "%"
 		where( "first_name LIKE ?", search_condition)
 	end
 
 	def search(query)
-		friends.select {|f| f.first_name.include?(query) }
+		return [] if query.blank?
+		friends.select {|f| f.first_name.downcase.include?(query.downcase) }
 	end
 		
 	def friends

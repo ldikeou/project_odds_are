@@ -21,6 +21,15 @@
 	margin-left: -15%
 }
 
+.btn-black{
+color: #fff;
+background-color: black;
+}
+
+.btn-black:disabled{
+	background-color: #aaa;
+}
+
 #profile_background{
 	position: fixed; left:0; top:0;
 	z-index: -100;
