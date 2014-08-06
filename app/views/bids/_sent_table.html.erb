@@ -18,7 +18,6 @@
             <td>Waiting for Recipient to Accept</td>
           <% elsif bid.completion_status == "ready_for_challenger" %>
             <td><%= link_to 'PLAY.',edit_bid_path(bid), class: "btn btn-success" %></td>
-          
           <% elsif bid.completion_status == "complete_the_challenge" %>
             <td><%= link_to 'Still havent completed bid.',edit_bid_path(bid), class: "btn btn-info" %></td>
           <% elsif bid.completion_status == "lost" %>
@@ -30,4 +29,8 @@
       </tr>
     <% end %>
   </tbody>
+      
+  
 </table> 
+
+<%= paginate @sent_bids %>
