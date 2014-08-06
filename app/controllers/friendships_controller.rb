@@ -10,7 +10,7 @@ class FriendshipsController < ApplicationController
 
 
 	def edit
-		@pending_friendships = Friendship.where(accepter_id: current_user, status: "pending")
+		@pending_friendships = current_user.pending_friendships
 	end
 
 	def new

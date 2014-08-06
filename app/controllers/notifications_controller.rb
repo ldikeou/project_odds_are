@@ -9,6 +9,7 @@ class NotificationsController < ApplicationController
 	def show
 		@notification = Notification.find(params[:id])
 		@notification.status = "read"
+		@notification.save
 		if @notification.type == "FriendshipNotification"
 			@friendship = Friendship.find(@notification.notifiable_id)
 			redirect_to user_path(@friendship.accepter_id)

@@ -7,8 +7,8 @@ devise :database_authenticatable, :registerable,
 has_many :sent_friendships, foreign_key: "requester_id", dependent: :destroy, class_name: 'Friendship'
 has_many :received_friendships, foreign_key: "accepter_id", dependent: :destroy, :class_name => 'Friendship'
 # has_many :friends, through: :friendships, class_name: "User"
-has_many :sent_bids, foreign_key: :sender_id, class_name: "Bid"
-has_many :received_bids, foreign_key: :receiver_id, class_name: "Bid"
+has_many :sent_bids, foreign_key: :sender_id, class_name: "Bid", dependent: :destroy, class_name: 'Bid'
+has_many :received_bids, foreign_key: :receiver_id, class_name: "Bid", dependent: :destroy, class_name: 'Bid'
 
 has_many :activities
 # current_user.challenged_bids
@@ -71,6 +71,12 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 		self.pending_friendships.include?(other_user)
 	end
 
+	def notifications
+		notifications = requested_notifications + accepted_notifications + 
+		bid_requested_notifications + challengers_guess_notifications +
+		recip_results_notifications + challenge_completed_notifications
+	end
+
 	def accepted_notifications
 		friendships = sent_friendships.where(status: "accepted")
 		notifications = []
@@ -97,9 +103,49 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 		notifications
 	end
 
-	def notifications
-		notifications = requested_notifications + accepted_notifications
+	
+
+	def bid_requested_notifications
+		bids = received_bids.where(completion_status: "ready_for_range")
+		notifications =[]
+		bids.each do |bid|
+			bid.bid_notifications.each do |notification|
+				if notification.status == "unread"
+					notifications << notification
+				end
+			end
+		end
+		notifications
 	end
+
+	def challengers_guess_notifications
+		bids = sent_bids.where(completion_status: "ready_for_challenger")
+		notifications =[]
+		bids.each do |bid|
+			bid.bid_notifications.each do |notification|
+				if notification.status == "unread"
+					notifications << notification
+				end
+			end
+		end
+		notifications
+	end
+
+	def recip_results_notifications
+		res1 = received_bids.where(completion_status: "determine_winner")
+		res2 = received_bids.where(completion_status: "lost")
+		bids = res1 + res2
+		notifications =[]
+		bids.each do |bid|
+			bid.bid_notifications.each do |notification|
+				if notification.status == "unread"
+					notifications << notification
+				end
+			end
+		end
+		notifications
+	end
+
 
 	def create_activity(item, action)
 		# scoped automatically to the user instance
@@ -111,5 +157,18 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 		activity
 	end
 
-	
+	def challenge_completed_notifications
+		bids = sent_bids.where(completion_status: "completed")
+		notifications =[]
+		bids.each do |bid|
+			bid.bid_notifications.each do |notification|
+				if notification.status == "unread"
+					notifications << notification
+				end
+			end
+		end
+		notifications
+	end
+
+
 end
