@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
 devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-has_many :friendships, foreign_key: "requester_id", dependent: :destroy
+has_many :sent_friendships, foreign_key: "requester_id", dependent: :destroy, class_name: 'Friendship'
+has_many :received_friendships, foreign_key: "accepter_id", dependent: :destroy, :class_name => 'Friendship'
 # has_many :friends, through: :friendships, class_name: "User"
 has_many :sent_bids, foreign_key: :sender_id, class_name: "Bid"
 has_many :received_bids, foreign_key: :receiver_id, class_name: "Bid"
@@ -16,6 +17,10 @@ has_attached_file :profile_pic, :styles => { :medium => "300x300>", :thumb => "1
 	:default_url => "default.png"
 validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 
+
+	def friendships
+		sent_friendships + received_friendships
+	end
 
 	def self.search(query)
 		search_condition = "%" + query + "%"
@@ -62,7 +67,16 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 	end
 
 	def accepted_notifications
-		friendships.joins(:friendship_notifications).where("notifications.status = 'unread'").map(&:notifications)
+		friendshipsm = sent_friendships.where(status: "accepted")
+		notifications = []
+		friendshipsm.each do |friendship|
+			friendship.friendship_notifications.each do |notification|
+				if notification.status == "unread"
+					notifications << notification
+				end
+			end
+		end
+		notifications
 	end
-
+	
 end

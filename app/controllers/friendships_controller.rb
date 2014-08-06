@@ -14,6 +14,7 @@ class FriendshipsController < ApplicationController
 	end
 
 	def new
+
 		@friendship = Friendship.new
 		if params[:q]
 			@users = User.search(params[:q]) 
@@ -38,7 +39,7 @@ class FriendshipsController < ApplicationController
 		f.update(status: params[:status])
 
 		if f.status == "accepted" 
-			f.friendship_notifications.create(status: "unread", message: "#{f.accepter_id} has accepted your friend request")
+			f.friendship_notifications.create(status: "unread", message: "#{f.accepter_id.first_name} has accepted your friend request")
 		end
 
 		redirect_to friendships_path(params: {id: params[:id]}), notice: "friendship was #{params[:status]}"
