@@ -8,12 +8,12 @@
 		<%= form_for @bid do |f| %>
 			<%= f.label :bid_complete %><br />
 		  	<%= f.file_field :bid_complete %>
-		  	<%= f.submit %>
-		  	<%= hidden_field_tag :redirect_to, bid_path(@bid) %>
+	  		<%= f.hidden_field :completion_status, :value => "completed" %>
+			<%= hidden_field_tag :redirect_to, bid_path(@bid) %>		
+		
+		  	<%= f.submit %>		  	
 		<% end %>
-		<% if @bid.bid_complete.present? %>
-			<%= hidden_field :completion_status, :value => "completed" %>		
-		<% end %>
+		
 		<%= link_to "If not ready to complete", bids_path, class: "btn btn-info" %>
 	<% end %>
 	
