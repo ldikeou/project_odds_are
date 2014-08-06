@@ -1,5 +1,7 @@
-<% @an.each do |notification| %>
-
-	<p><%= link_to "#{notification.message}", notification_path(notification), {:method => :get}   %> </p>
-
+<% if @notifications.empty? %>
+	<p>You have no new notifications</p>
+<% else %>
+	<% @notifications.each do |notification| %>
+		<p><%= link_to "#{notification.message}", notification_path(notification), {:method => :get}   %> </p>
+	<% end %>
 <% end %>

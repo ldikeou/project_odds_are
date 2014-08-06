@@ -14,7 +14,9 @@ class Friendship < ActiveRecord::Base
 		frienship.friendship_notifications.create(status: "unread", message: "#{requester.username} sent you a friend request")
 	end
 
-
+	def pending_friendships
+		Friendship.where(accepter_id: self.id, status: "pending")
+	end
 
 	# def self.update_status(status, requester, accepter)
 	# 	frienship = Friendship.where(requester: "requester", accepter: "accepter")

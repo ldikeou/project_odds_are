@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140805195739) do
-
+ActiveRecord::Schema.define(version: 20140806150009) do
 
   create_table "bids", force: true do |t|
     t.integer  "sender_id"
@@ -29,6 +28,8 @@ ActiveRecord::Schema.define(version: 20140805195739) do
     t.integer  "bid_complete_file_size"
     t.datetime "bid_complete_updated_at"
   end
+
+  add_index "bids", ["sender_id", "receiver_id"], name: "index_bids_on_sender_id_and_receiver_id"
 
   create_table "friendships", force: true do |t|
     t.integer  "requester_id"
