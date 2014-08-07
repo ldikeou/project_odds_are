@@ -75,6 +75,7 @@ th, td {
 	width: 100%;
 	width: auto; height: auto;
 	background-repeat: no-repeat;
+	background-color: black;
 }
 
 #nav_logo {

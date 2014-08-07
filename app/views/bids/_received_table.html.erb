@@ -33,7 +33,7 @@
             <% elsif bid.completion_status == "no_runback" %>
               <td><button type="button" class="btn btn-danger">No Runback. Game over.</button></td>
             <% elsif bid.completion_status == "runback_to_challenger" %>
-              <td>Waiting for Challenger... again.</td>
+              <td>Waiting for Challenger... for run back.</td>
             <% elsif bid.completion_status == "will_complete_bid" %>
               <td><%= link_to 'Waiting to complete runback :(.',bid_path(bid), class: "btn btn-primary" %></td>
             <% elsif bid.completion_status == "run_over" %>

@@ -17,17 +17,15 @@
 <% end %>
 
 <% if @bid.completion_status == "determine_winner" %>
-
 	<% if current_user.id == @bid.receiver.id %>
-		<%= render 'check_recip_guess' %>
-		<% else %>
-			<%= render 'challenger_guess' %>	
+		<%= render 'recip_guess' %>
+	<% else %>
+		<%= render 'challenger_guess' %>	
 	<% end %>
 <% end %>
 
 <!-- if the receiver lost then we get the chance to run it back -->
 <% if current_user.id == @bid.receiver.id && @bid.completion_status == "lost" %>
-
 	<%= render 'check_recip_guess' %>
 <% end %>
 
@@ -39,8 +37,8 @@ and when she has completed it -->
 <% if @bid.completion_status == "complete_the_challenge" %>
 	<% if current_user.id == @bid.receiver.id %>
 		<%= render 'recip_complete' %>
-		<% else %>
-			<%= render 'challenger_complete' %>
+	<% else %>
+		<%= render 'challenger_complete' %>
 	<% end %>
 <% end %>
 <!-- the challenger wins and the recipient has to complete the bid -->
@@ -55,15 +53,14 @@ notified and are directed to the show page!-->
 
 <!-- run it back, for receiver -->
 <!-- if you are the sender you are notified that the receiver is a pussy and didn't rollback -->
-<% if current_user.id = @bid.receiver.id %>
-	<% if @bid.completion_status == "no_runback" %>
-		<%= render 'challenger_lost' %>
-	<% end %>
+<% if current_user.id = @bid.receiver.id && @bid.completion_status == "no_runback" %>
+	<%= render 'challenger_lost' %>
 <% end %>
 
+	<%= binding.pry %>
 
 <% if current_user.id == @bid.receiver.id && @bid.completion_status == "accept_runback" %>
-		<%= render 'recip_accept_runback' %>	
+	<%= render 'recip_accept_runback' %>	
 <% end %>
 
 <% if current_user.id = @bid.sender.id && @bid.completion_status == "runback_to_challenger" %>
@@ -72,7 +69,7 @@ notified and are directed to the show page!-->
 
 <% if @bid.completion_status == "determine_runback_winner" %>
 	<% if current_user.id == @bid.receiver.id %>
-		<%= render 'runback_recip_guess' %>
+			<%= render 'runback_recip_guess' %>
 		<% else %>
 			<%= render 'runback_challenger_guess' %>	
 	<% end %>
@@ -81,8 +78,8 @@ notified and are directed to the show page!-->
 <% if @bid.completion_status == "will_complete_bid" %>
 	<% if current_user.id == @bid.receiver.id %>
 		<%= render 'runback_recip_complete' %>
-		<% else %>
-			<%= render 'runback_challenger_complete' %>	
+	<% else %>
+		<%= render 'runback_challenger_complete' %>	
 	<% end %>
 <% end %>
 
