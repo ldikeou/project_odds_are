@@ -44,9 +44,10 @@ body {
 }
 
 #nav_pic {
-	padding-top-bottom: 3px;
-	display: inline;
+	display: inline-block;
 	border:2px solid black;
+	padding: 0px;
+	
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
 	border-radius: 2px;
