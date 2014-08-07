@@ -1,6 +1,6 @@
 <%= image_tag "ali.jpg", class: "bg-img" %>
 
-<div class="container text-center">	
+<div class="container text-center" id="accept_page">	
 	<h1>Congrats <%= @bid.sender.username %> has challenged you!<h1>	
 	
 	<%= link_to 'Accept & be legendary', bid_path(@bid, completion_status: "accepted"), method: "PATCH", class: "btn btn-primary btn-lg" %>
