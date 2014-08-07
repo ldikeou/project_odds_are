@@ -2,8 +2,12 @@
 <div class="container">
 	<% @friends.each do |f| %>
 		<div class="friends">
-			<span ><%= link_to f.username.titleize, user_path(f), class: "something_wierd" %></span>
-			<span><%= link_to 'delete friend', friendship_path(f), method: :delete, class: "btn-black btn-xs pull-right"  %></span>
+			<div class="row">
+				<div class="col-md-6">
+					<span ><%= link_to f.username.titleize, user_path(f), class: "something_wierd" %></span>
+					<span><%= link_to 'delete friend', friendship_path(f), method: :delete, class: "btn-black btn-xs pull-right"  %></span>
+				</div>
+			</div>
 		</div>
 	<% end %>
 	<br><br>

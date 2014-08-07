@@ -1,7 +1,27 @@
-<% if @notifications.empty? %>
-	<p>You have no new notifications</p>
-<% else %>
-	<% @notifications.each do |notification| %>
-		<p><%= link_to "#{notification.message}", notification_path(notification), {:method => :get}   %> </p>
-	<% end %>
-<% end %>
+
+	<table class="table table-striped">	
+		
+		<thead>
+			<tr>
+				<h2>Notifications</h2>
+					<th colspan="1"></th>
+			</tr>
+		
+		</thead>
+		<tbody>
+			<% if @notifications.empty? %>
+					<tr>
+
+				<td>You have no new notifications</td>
+			</tr>
+			<% else %>
+				<% @notifications.each do |notification| %>
+						<tr>
+
+					<td class="notification_message"><%= link_to "#{notification.message}", notification_path(notification), method: :get %></td> 
+				<% end %>
+			</tr>
+			<% end %>
+		</tr>
+		</tbody>
+	</div>
