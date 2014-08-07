@@ -1,7 +1,5 @@
 $(function() {
-  console.log("this shit loaded");
 
-  console.log($('#users_bid_search input'));
   $('#users_bid_search input').keyup(function(e) {
     var form = $('#users_bid_search')
     // This is the <ul>

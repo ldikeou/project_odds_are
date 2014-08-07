@@ -20,14 +20,109 @@
 #nav_search_bar_yes{
 	margin-left: -15%
 }
+
+.notifications{
+	border-radius: 2px;
+	border-radius: 2px;
+	background-color: #eee;
+
+}
+
+.notification_message a{
+	color: black;
+}
+.notification_message a:hover{
+	color: #999;
+}
+
+
+.friends{
+	background-color: #eee;
+	border-radius: 2px;
+	border-radius: 2px;
+	text-decoration: none;
+	margin-top: .4em;
+}
+
+.friends a:hover{
+	color: #999;
+}
+
 .btn-black{
-color: #fff;
-background-color: #333;
+background-color: #555;
+color: white;
 }
 
 .btn-black:disabled{
 	background-color: #aaa;
 }
+
+.vcenter {
+    display: table-cell;
+vertical-align: middle;
+}
+
+
+.search_results{
+	border-style: solid;
+	border-width: thin;
+	width: 600px;
+	height: 45px;
+	/*vertical-align: center;*/
+	background-color: #eee;
+	display: inline-block;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	margin: .7em;
+}
+
+.friendrequests{
+	border-style: solid;
+	border-width: thin;
+	vertical-align: center;
+	background-color: #eee;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	display: inline-block;
+	margin: .7em;
+	padding: .4em;
+}
+
+.friendrequests li{
+	list-style-type: none;
+	display: inline;
+}
+ul{
+	padding: 0;
+	margin-left: -1em;
+}
+
+.friendrequests li p{
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.5em
+	margin-right: 20px;
+	margin-right: 10px;
+}
+
+
+.search_results span{
+	margin-left: 20px;
+}
+
+.something_wierd{
+	color: black;
+	font-weight: bold;
+	text-decoration: inherit; 
+}
+
+.search_results a:hover{
+	color: #999; /* blue colors for links too */
+	text-decoration: inherit; 
+}
+
 
 #profile_background{
 	position: fixed; left:0; top:0;

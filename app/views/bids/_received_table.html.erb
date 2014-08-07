@@ -16,7 +16,7 @@
           <td><%= bid.sender.username %></td>
           <td><%= bid.description %></td>
           <% if bid.completion_status == "ready_for_range" %>
-            <td><%= link_to 'PLAY.',edit_bid_path(bid), class: "btn btn-success" %></td>       
+            <td><%= link_to 'PLAY.',edit_bid_path(bid), class: "btn btn-success" %></td>
             <% elsif bid.completion_status == "ready_for_challenger" %>
               <td>Waiting for Challenger</td>
             <% elsif bid.completion_status == "determine_winner" %>
