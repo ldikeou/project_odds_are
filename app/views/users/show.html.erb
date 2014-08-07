@@ -14,7 +14,7 @@
   		</div>
 		</div>	
 		<input type="text" class="form-control" placeholder="About Me">
-		<%= link_to 'My Friends', friendships_path(params: {id: params[:id]}), class: "btn btn-primary btn-lg" %>
+		<br><%= link_to 'My Friends', friendships_path(params: {id: params[:id]}), class: "btn btn-black btn-lg" %>
 	</div>
 	<% if current_user.friends?(@other_user) %>
 		<%= render 'friend_profile' %>
