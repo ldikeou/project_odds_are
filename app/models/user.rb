@@ -62,6 +62,13 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 		friendships = Friendship.where(Friendship.arel_table[:requester_id].eq(id).or(
 			Friendship.arel_table[:accepter_id].eq(id))
 		).where(Friendship.arel_table[:status].eq("pending"))
+		friendships
+	end
+
+	def pending_friends
+		friendships = Friendship.where(Friendship.arel_table[:requester_id].eq(id).or(
+			Friendship.arel_table[:accepter_id].eq(id))
+		).where(Friendship.arel_table[:status].eq("pending"))
 		friendships.map do |friendship|
 			if friendship.requester_id == id
 				friendship.accepter
@@ -70,6 +77,11 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 			end
 		end
 	end
+
+	# def pending_friendships
+	# 	binding.pry
+	# 	Friendship.where(accepter_id: self.id, status: "pending")
+	# end
 
 
 	def friends?(other_user)

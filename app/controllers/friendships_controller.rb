@@ -11,6 +11,7 @@ class FriendshipsController < ApplicationController
 
 	def edit
 		@pending_friendships = current_user.pending_friendships
+		@pending_friends= current_user.pending_friends
 	end
 
 	def new
@@ -24,7 +25,7 @@ class FriendshipsController < ApplicationController
 	end
 
 	def create
-		Friendship.request(current_user.id, params[:accepter_id].to_i)
+		Friendship.request(current_user, User.find(params[:accepter_id]))
 		redirect_to user_path(current_user)
 	end
 

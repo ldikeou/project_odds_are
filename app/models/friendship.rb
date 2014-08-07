@@ -15,6 +15,7 @@ class Friendship < ActiveRecord::Base
 	end
 
 	def pending_friendships
+		binding.pry
 		Friendship.where(accepter_id: self.id, status: "pending")
 	end
 
