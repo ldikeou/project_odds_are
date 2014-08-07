@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140806210309) do
+ActiveRecord::Schema.define(version: 20140807135554) do
 
   create_table "bids", force: true do |t|
     t.integer  "sender_id"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20140806210309) do
     t.string   "bid_complete_content_type"
     t.integer  "bid_complete_file_size"
     t.datetime "bid_complete_updated_at"
+    t.integer  "runback_recip_guess"
+    t.integer  "runback_challenger_guess"
   end
 
   add_index "bids", ["sender_id", "receiver_id"], name: "index_bids_on_sender_id_and_receiver_id"

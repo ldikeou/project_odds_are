@@ -22,11 +22,22 @@
             <% elsif bid.completion_status == "determine_winner" %>
               <td><%= link_to 'Results.',edit_bid_path(bid), class: "btn btn-success" %></td>           
             <% elsif bid.completion_status == "complete_the_challenge" %>
-              <td><%= link_to 'Complete your bid pu$$y.',edit_bid_path(bid), class: "btn btn-danger" %></td>           
-            <% elsif bid.completion_status == "lost" %>
-              <td><%= link_to 'You won! No need to complete.',edit_bid_path(bid), class: "btn btn-info" %></td>
+              <td><%= link_to 'Complete your bid pu$$y.',edit_bid_path(bid), class: "btn btn-danger" %></td>
             <% elsif bid.completion_status == "completed" %>
-              <td><%= link_to 'View Completed Bid.',bid_path(bid), class: "btn btn-primary" %></td>
+              <td><%= link_to 'View Completed Bid.',bid_path(bid), class: "btn btn-primary" %></td> 
+
+
+            <% elsif bid.completion_status == "lost" %>
+              <td><%= link_to 'Run it back?',edit_bid_path(bid), class: "btn btn-success" %></td> 
+
+            <% elsif bid.completion_status == "no_runback" %>
+              <td><button type="button" class="btn btn-danger">No Runback. Game over.</button></td>
+            <% elsif bid.completion_status == "runback_to_challenger" %>
+              <td>Waiting for Challenger... again.</td>
+            <% elsif bid.completion_status == "will_complete_bid" %>
+              <td><%= link_to 'Waiting to complete runback :(.',bid_path(bid), class: "btn btn-primary" %></td>
+            <% elsif bid.completion_status == "run_over" %>
+              <td>Runback Declined.</td>
           <% end %>
           <td><%= link_to 'Destroy', bid, method: :delete, data: { confirm: 'Are you sure?' } %></td>      
       </tr>

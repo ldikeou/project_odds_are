@@ -1,14 +1,14 @@
 <div class="jumbotron">
 	<% if @bid.recip_guess == @bid.challenger_guess %>
-		<h1>CHALLENGE ACCEPTED</h1><br>
-		<h1> I will attempt to complete... <%= @bid.description %> <h1>
+		<h1>Run back is success.</h1><br>
+		<h1> <%= @bid.sender.username %>will attempt to complete... <%= @bid.description %> <h1>
 		<%= hidden_field :completion_status, :value => "complete_the_challenge" %>
-		<%= link_to 'Back to Bids', bids_path, class: "btn btn-info" %>
+		<%= link_to 'Back to Profile', current_user, class: "btn btn-info" %>
 		<%= link_to 'Complete bid now #legend', bid_path(@bid), class: "btn btn-info"%>
 	<% else %>
 		<h2> You lost! No need to complete the challenge. <h2>
 		<h2> Do you want to run it back? <h2>
-		<%= link_to 'YES.', bid_path(@bid, completion_status: "accept_runback", redirect_to edit_bid_path(@bid)), method: "PATCH", class: "btn btn-primary btn-lg" %>	
+		<%= link_to 'YES.', bid_path(@bid, completion_status: "accept_runback"), method: "PATCH", class: "btn btn-primary btn-lg" %>	
 		<%= link_to 'Nah. Revenge is best served cold.', bid_path(@bid, completion_status: "no_runback"), method: "PATCH", class: "btn btn-primary btn-lg" %>
 	<% end %>
 </div>	

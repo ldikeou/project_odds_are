@@ -24,6 +24,14 @@
 			<%= render 'challenger_guess' %>	
 	<% end %>
 <% end %>
+
+<!-- if the receiver lost then we get the chance to run it back -->
+<% if current_user.id == @bid.receiver.id && @bid.completion_status == "lost" %>
+
+	<%= render 'check_recip_guess' %>
+<% end %>
+
+	
 <!-- after the recipient "loses" and has to complete the challenge, this is the 
 page where she will upload the proof that she completed it.  -->
 <!-- the challenger or "winner" will be notified that she is working on it 
@@ -36,19 +44,64 @@ and when she has completed it -->
 	<% end %>
 <% end %>
 <!-- the challenger wins and the recipient has to complete the bid -->
-<% if @bid.completion_status == "lost" %>
-	<% if current_user.id == @bid.receiver.id %>
-		<%= render 'recip_lost' %>
-		<% else %>
-			<%= render 'challenger_lost' %>
-	<% end %>
-<% end %>
+
 
 <!-- after the recip has completed the challenge the recip and the challenger are 
 notified and are directed to the show page!-->
+
 <% if @bid.completion_status == "completed" %>
 	<%=  redirect_to bid_path(@bid) %>
 <% end %>
+
+<!-- run it back, for receiver -->
+<!-- if you are the sender you are notified that the receiver is a pussy and didn't rollback -->
+<% if current_user.id = @bid.receiver.id %>
+	<% if @bid.completion_status == "no_runback" %>
+		<%= render 'challenger_lost' %>
+	<% end %>
+<% end %>
+
+
+<% if current_user.id == @bid.receiver.id && @bid.completion_status == "accept_runback" %>
+		<%= render 'recip_accept_runback' %>	
+<% end %>
+
+<% if current_user.id = @bid.sender.id && @bid.completion_status == "runback_to_challenger" %>
+	<%= render 'runback_challenger_guess' %>
+<% end %>
+
+<% if @bid.completion_status == "determine_runback_winner" %>
+	<% if current_user.id == @bid.receiver.id %>
+		<%= render 'runback_recip_guess' %>
+		<% else %>
+			<%= render 'runback_challenger_guess' %>	
+	<% end %>
+<% end %>
+
+<% if @bid.completion_status == "will_complete_bid" %>
+	<% if current_user.id == @bid.receiver.id %>
+		<%= render 'runback_recip_complete' %>
+		<% else %>
+			<%= render 'runback_challenger_complete' %>	
+	<% end %>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

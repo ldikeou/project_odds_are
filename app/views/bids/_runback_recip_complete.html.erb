@@ -1,0 +1,6 @@
+<div class="jumbotron">
+	<h3><%= @bid.sender.username %> still hasn't complete the bid!<h3>
+	<h3>Check back again soon. #peerpressure<h3>
+	<h1>Here's a picture of Lucy...<h1><%= image_tag "lucy2.jpg" %><br>
+	<%= link_to 'Back to Bids', bids_path(@bid), class: "btn btn-info" %>
+</div>

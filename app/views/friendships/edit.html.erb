@@ -3,6 +3,7 @@
 	<p> You have no pending requests</p>
 <% else %>
 	<% @pending_friendships.each do |pf| %>
+	
 		<p><%= pf.requester.email %> <%= link_to 'accept friend', friendship_path(pf, status: "accepted"), {:method => :patch}   %> 
 			<%= link_to 'decline friend', friendship_path(pf, status: "declined"), {:method => :patch}  %></p>
 	<% end %>
