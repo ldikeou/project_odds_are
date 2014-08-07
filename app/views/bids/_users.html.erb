@@ -1,3 +1,8 @@
+
+<% unless @users.empty? %>
+	<h6>Choose a friend:</h6>
+<% end %>
+
 <% @users.each do |user| %>
 	<%= link_to user.username, "#", id: user.id, class: "select_receiver_link" %>
 <% end %>

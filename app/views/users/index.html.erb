@@ -1,4 +1,7 @@
 <div class="container">
+
+<h2>All users that contain your search:</h2>
+<br>
 	<% @users.each do |user| %>
  	  <p><%= link_to user.username, user_path(user) %></p>
  	<% end %>
