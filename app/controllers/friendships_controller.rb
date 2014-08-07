@@ -2,16 +2,17 @@ class FriendshipsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
+		@friends = current_user.friends
 
-		@friends = User.find(params[:id]).friends
 		@friend_id=params[:id]
 
 	end
 
 
 	def edit
-		@pending_friendships = current_user.pending_friendships
-		@pending_friends= current_user.pending_friends
+		# @pending_friendships = current_user.pending_friendships
+		@friend_requests= current_user.friend_requests
+		# @pending_friends= current_user.pending_friends
 	end
 
 	def new
