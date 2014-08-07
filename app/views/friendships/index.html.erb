@@ -1,8 +1,11 @@
 
-
-<% @friends.each do |f| %>
-	<p><%= link_to f.username, user_path(f) %><br> <%= link_to 'delete friend', friendship_path(f), {:method => :delete}  %></p><br><br>
-<% end %>
-
-<%= link_to 'Add Friends', new_friendship_path,  class: "btn btn-primary btn-lg" %>
-
+<div class="container">
+	<% @friends.each do |f| %>
+		<div class="friends">
+			<span ><%= link_to f.username.titleize, user_path(f), class: "something_wierd" %></span>
+			<span><%= link_to 'delete friend', friendship_path(f), method: :delete, class: "btn-black btn-xs pull-right"  %></span>
+		</div>
+	<% end %>
+	<br><br>
+	<%= link_to 'Add Friends', new_friendship_path,  class: "btn btn-black" %>
+</div>

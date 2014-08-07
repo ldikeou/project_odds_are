@@ -1,8 +1,27 @@
 <div class="container">
 
-<h2>All users that contain your search:</h2>
-<br>
-	<% @users.each do |user| %>
- 	  <p><%= link_to user.username, user_path(user) %></p>
- 	<% end %>
- </div>
+	
+	<h2>All users that contain your search:</h2>
+	<br>
+	
+		<% @users.each do |user| %>
+		
+		<div class="row">
+			<div class="search_results">
+	 	  
+	 	  	<div class="col-md-6">
+	 	  		<%= link_to (image_tag user.profile_pic.url(:thumb)), user, id: "nav_pic" %>
+	 	  		<span id="cri"><%= link_to "#{user.username.titleize} (#{user.first_name.titleize})", user_path(user), class: "something_wierd" %></span>
+	 	  	</div>
+	 	  	<div class="col-md-6 midcont"><% if current_user.friends?(user) %>
+	 	  		<span>Friends</span>
+	 	  		<% elsif current_user.pending_friends?(user) %>
+		 	  		<span >Friendship Pending</span>
+	 	  		<% else %>
+		 	  		<span ><%= link_to "Add #{user.username.titleize}", friendships_path(@friendship, accepter_id: user.id), method: :post, class: "btn btn-black" %></span>
+	 	  		<% end %></div>
+	 	  </div>
+	 	  </div>
+	 	<% end %>
+	 
+</div>
