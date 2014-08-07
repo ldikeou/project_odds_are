@@ -1,7 +1,7 @@
-<% if @pending_friendships.empty?  %>
+<% if @friend_requests.empty?  %>
 	<p> You have no pending requests</p>
 <% else %>
-	<% @pending_friendships.each do |pf| %>
+	<% @friend_requests.each do |pf| %>
 		<ul>
 			<div class="friendrequests">
 				<li><p><%= pf.requester.email %></p></li>

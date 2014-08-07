@@ -36,8 +36,9 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 
 	def self.search(query)
 		return all unless query
+		t = arel_table
 		search_condition = "%" + query + "%"
-		where( "first_name LIKE ?", search_condition)
+		where(t[:first_name].matches(search_condition).or(t[:last_name].matches(search_condition).or(t[:email].matches(search_condition))))
 	end
 
 	def search(query)
@@ -63,6 +64,10 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 			Friendship.arel_table[:accepter_id].eq(id))
 		).where(Friendship.arel_table[:status].eq("pending"))
 		friendships
+	end
+
+	def friend_requests
+		friendships = received_friendships.where(status: "pending")
 	end
 
 	def pending_friends

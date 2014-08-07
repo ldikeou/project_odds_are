@@ -26,7 +26,7 @@
             <ul class="nav navbar-nav">
               <li><%= link_to (image_tag current_user.profile_pic.url(:thumb)), current_user, id: "nav_pic" %></li>
               <li><%= link_to current_user.username.capitalize, current_user %></li>
-              <li><a href="<%= edit_friendship_path(current_user) %>">Friend Request <span class="badge"><%= "#{current_user.pending_friendships.count}" %></span></a></li>
+              <li><a href="<%= edit_friendship_path(current_user) %>">Friend Request <span class="badge"><%= "#{current_user.friend_requests.count}" %></span></a></li>
               <li><%= link_to 'Challenge', new_bid_path(@bid) %></li>
               <li><%= link_to 'Show Bids', bids_path%></li>
               
