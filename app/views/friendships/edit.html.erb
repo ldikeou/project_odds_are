@@ -4,7 +4,8 @@
 	<% @friend_requests.each do |pf| %>
 		<ul>
 			<div class="friendrequests">
-				<li><p><%= pf.requester.email %></p></li>
+				<li><%= image_tag pf.requester.profile_pic.url(:thumb), id: "nav_pic" %><span><%= "#{pf.requester.first_name.titleize} #{pf.requester.last_name.titleize} "%></span><br><br></li>
+				
 				<li><%= link_to 'accept friend', friendship_path(pf, status: "accepted"), method: :patch, class: "btn-sm btn-black" %> </li
 					 		>
 		 		<li><%= link_to 'decline friend', friendship_path(pf, status: "declined"), method: :patch, class: "btn-sm btn-black"  %></li>
@@ -14,5 +15,5 @@
 <% end %>
 <br>
 <p>
-	<%= link_to 'Back to Profile', user_path, {:method => :get}  %></p>
+	<%= link_to 'Back to Profile', user_path, method: :get, class: "btn btn-black" %></p>
 </p>

@@ -24,6 +24,15 @@
 	border-radius: 20px;
 }
 
+#floot{
+	float: top;
+	padding-left: 50px;
+}
+
+.friendrequests p{
+	text-align: right;
+	margin-left: 10px;
+}
 
 #accept_page{
 	background-color: rgba(250,241,241, 0.5);
