@@ -66,6 +66,16 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 		friendships
 	end
 
+
+	def get_friendship
+		friendship = Friendship.where(Friendship.arel_table[:requester_id].eq(id).or(
+			Friendship.arel_table[:accepter_id].eq(id))
+		).where(Friendship.arel_table[:status].eq("accepted"))
+		unless friendship.empty?
+		friendship.first
+		end
+	end
+
 	def friend_requests
 		friendships = received_friendships.where(status: "pending")
 	end
@@ -108,10 +118,11 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 		notifications = []
 		friendships.each do |friendship|
 			friendship.friendship_notifications.each do |notification|
-				if notification.status == "unread"
+				if notification.status == "unread" && !notification.message.include?("sent")
 					notifications << notification
 				end
 			end
+			
 		end
 		notifications
 	end
@@ -120,10 +131,10 @@ validates_attachment_content_type :profile_pic, :content_type => /\Aimage\/.*\Z/
 		friendships = received_friendships.where(status: "pending")
 		notifications = []
 		friendships.each do |friendship|
-			friendship.friendship_notifications.each do |notification|
-				if notification.status == "unread"
-					notifications << notification
-				end
+				friendship.friendship_notifications.each do |notification|
+					if notification.status == "unread"
+						notifications << notification
+					end
 			end
 		end
 		notifications

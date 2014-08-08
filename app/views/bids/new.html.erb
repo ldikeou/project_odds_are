@@ -2,28 +2,28 @@
 	<h1> Bid Creation Page </h1>
 	<!-- creates the search bar that will eventually search the friends -->
 
-	<% if  @bid.receiver_id.blank? %>
+	<% if @bid.receiver_id.blank? %>
 		<div class="form-group">
 			<%= form_tag(new_bid_path, method: "get", id: "users_bid_search") do %>
 				<%= label_tag(:q, "Search a friend to challenge:") %>
 				<%= text_field_tag(:q, params[:q], autocomplete: "off") %>
 			<% end %>
 		</div>
-
+	<div id="users">
+		<%= render 'users' %>
+	</div>
 	<% else %>
 		<p>Send bid to <%= "#{User.find(@bid.receiver_id).username}" %></p>
 	<% end %>
 
-	<div id="users">
-		<%= render 'users' %>
-	</div>
+	
 	
 	<!-- creates the text area for the challenge -->
 	<%= form_for @bid do |f| %>
 		<h4>Odds Are you...</h4>
 		<%= f.hidden_field :receiver_id %>
 		<%= f.text_area :description, :size => "1x1", class: "form-control", placeholder: "Description" %><br>
-		<%= f.submit "Legends Never Die.", class: "btn btn-black", disabled: true %>
+		<%= f.submit "Legends Never Die.", class: "btn btn-black", disabled: @bid.receiver_id.blank? %>
 	<% end %>
 </div>
 
