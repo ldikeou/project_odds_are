@@ -8,7 +8,7 @@
 	
 	<% if @bid.bid_complete? %>
 
-		<%= image_tag @bid.bid_complete.url(:medium) %><br>
+		<%= image_tag @bid.bid_complete.url(:medium)%><br>
 		<%= link_to "Back to Bids", bids_path, class: "btn btn-info" %>
 	<% else %>
 		<%= form_for @bid do |f| %>

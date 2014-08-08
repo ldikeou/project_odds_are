@@ -8,11 +8,7 @@
 		<%= image_tag current_user.profile_pic.url(:medium),  id: "profile_pic" %><br>	
 		
 		<h5> <%= current_user.username %> has completed <%= Bid.number_of_completed_bids_for_user(current_user) %> bids.</h5><br>
-		<div class="progress">
-	  		<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-	    	<span class="sr-only"> Complete</span>
-  		</div>
-		</div>	
+			
 		<input type="text" class="form-control" placeholder="About Me">
 		<br><%= link_to 'My Friends', friendships_path(params: {id: params[:id]}), class: "btn btn-black btn-lg" %>
 	</div>
@@ -21,7 +17,6 @@
 
 	<% elsif current_user == @other_user %>
 	<div class="col-md-8">
-		<h4>Where the biddies go.</h4>
 		<%= render 'news_feed' %>
 	</div>
 	<% else %>
