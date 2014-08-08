@@ -175,6 +175,15 @@ table {
 	width: 100px;
 }
 
+#profile_background{
+	position: fixed; left:0; top:0;
+	z-index: -100;
+	/*height: 100%;
+	width: 100%;
+	width: auto; height: auto;*/
+	background-repeat: repeat-x;
+}
+
 th, td {
 	width: 350px;
 }

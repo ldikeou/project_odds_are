@@ -1,5 +1,5 @@
 <div class="jumbotron">
-	<% if @bid.recip_guess == @bid.challenger_guess %>
+	<% if @bid.runback.recip_guess == @bid.runback.challenger_guess %>
 		<h1>Run back is success.</h1><br>
 		<h1> <%= @bid.sender.username %>will attempt to complete... <%= @bid.description %> <h1>
 		<%= hidden_field :completion_status, :value => "complete_the_challenge" %>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    
     <link rel="stylesheet" type ="text/css" href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,600' rel='stylesheet' type='text/css'>
       <title>OddsAre</title>
       <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -48,7 +49,7 @@
             </div>
             <% else %>
             <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to "Login in", user_session_path , method: :post %></li>
+              <li><%= link_to "Login", user_session_path , method: :post %></li>
               <li><%= link_to "Sign up", new_user_registration_path , method: :get %></li>
             </ul>
             <% end %>
@@ -64,4 +65,5 @@
         <%= yield %>
       </div>
     </body>
+
   </html>

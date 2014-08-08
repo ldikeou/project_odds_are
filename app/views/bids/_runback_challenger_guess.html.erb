@@ -1,11 +1,10 @@
 <div class="jumbotron">	
 	<% if @bid.runback_challenger_guess.present? %>
 		<% if @bid.runback_recip_guess == @bid.runback_challenger_guess %>
-			<h1>You lost!!! But who cares. MU@$%F@**NG CHALLENGE ACCEPTED.<h1><br>
-			<h3>You must now...<%= @bid.description %></h3><br>
-			<%= hidden_field :completion_status, :value => "will_complete_bid" %>
-			<%= link_to 'Back to Bids', bids_path(@bid), class: "btn btn-info" %>
-			<%= link_to 'Complete bid now #legend', bid_path(@bid), class: "btn btn-info" %>
+			<h1>You lost!!! But who cares. MU@$%F@**NG CHALLENGE ACCEPTED.<h1>
+			<h3>You must now...<%= @bid.description %></h3>
+			<%= link_to 'Back to Bids', bid_path(@bid, completion_status: "will_complete_bid", redirect_to: bids_path(@bid)), method:"PATCH", class: "btn btn-info" %>
+			<%= link_to 'Complete bid now #legend', bid_path(@bid, completion_status: "will_complete_bid", redirect_to: edit_bid_path(@bid)), method: "PATCH", class: "btn btn-info" %>
 			
 		<% else %>
 			<h2>You lost. No need to complete runback. <h2>

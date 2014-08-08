@@ -7,7 +7,7 @@
 		<%= link_to 'Complete bid now #legend', bid_path(@bid), class: "btn btn-info"%>
 	<% else %>
 		<h2> You lost! No need to complete the challenge. <h2>
-		<h2> Do you want to run it back? <h2>
+		<h1> Do you want to run it back? <h1>
 		<%= link_to 'YES.', bid_path(@bid, completion_status: "accept_runback", redirect_to: edit_bid_path(@bid)), method: "PATCH", class: "btn btn-primary btn-lg" %>	
 		<%= link_to 'Nah. Revenge is best served cold.', bid_path(@bid, completion_status: "no_runback"), method: "PATCH", class: "btn btn-primary btn-lg" %>
 	<% end %>
