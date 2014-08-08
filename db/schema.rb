@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140807135554) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "bids", force: true do |t|
     t.integer  "sender_id"
     t.integer  "receiver_id"
@@ -34,7 +31,7 @@ ActiveRecord::Schema.define(version: 20140807135554) do
     t.integer  "runback_challenger_guess"
   end
 
-  add_index "bids", ["sender_id", "receiver_id"], name: "index_bids_on_sender_id_and_receiver_id", using: :btree
+  add_index "bids", ["sender_id", "receiver_id"], name: "index_bids_on_sender_id_and_receiver_id"
 
   create_table "friendships", force: true do |t|
     t.integer  "requester_id"
@@ -44,7 +41,7 @@ ActiveRecord::Schema.define(version: 20140807135554) do
     t.datetime "updated_at"
   end
 
-  add_index "friendships", ["requester_id", "accepter_id"], name: "index_friendships_on_requester_id_and_accepter_id", using: :btree
+  add_index "friendships", ["requester_id", "accepter_id"], name: "index_friendships_on_requester_id_and_accepter_id"
 
   create_table "notifications", force: true do |t|
     t.integer "notifiable_id"
@@ -78,7 +75,7 @@ ActiveRecord::Schema.define(version: 20140807135554) do
     t.datetime "profile_pic_updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
