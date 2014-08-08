@@ -162,12 +162,6 @@ body {
 	border-radius: 2px;
 }
 
-#valign {
-display: flex;
-justify-content: center; /* align horizontal */
-align-items: center; /* align vertical */
-}
-
 table {
 	table-layout: fixed;
 	width: 100px;
