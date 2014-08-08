@@ -57,8 +57,6 @@ notified and are directed to the show page!-->
 	<%= render 'challenger_lost' %>
 <% end %>
 
-	<%= binding.pry %>
-
 <% if current_user.id == @bid.receiver.id && @bid.completion_status == "accept_runback" %>
 	<%= render 'recip_accept_runback' %>	
 <% end %>

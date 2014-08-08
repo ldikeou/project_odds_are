@@ -17,6 +17,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+#accept_page{
+	background-color: rgba(250,241,241, 0.5);
+	border-radius: 30px;
+	/*padding-top: 10px;*/
+	padding: 10px 10px 10px 10px;
+}
+
 #nav_search_bar_yes{
 	margin-left: -15%
 }
