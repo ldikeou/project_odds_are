@@ -1,7 +1,13 @@
 
 <div class="jumbotron">
-	<h2><%= @bid.receiver.username %> has completed <%= @bid.description %></h2>
-	<% if @bid.bid_complete.present? %>
+	<% if @bid.runback_challenger_guess.present? %>
+		<h2><%= @bid.sender.username %> has completed <%= @bid.description %></h2>
+	<% else %>
+		<h2><%= @bid.receiver.username %> has completed <%= @bid.description %></h2>
+	<% end %>
+	
+	<% if @bid.bid_complete? %>
+
 		<%= image_tag @bid.bid_complete.url(:medium) %><br>
 		<%= link_to "Back to Bids", bids_path, class: "btn btn-info" %>
 	<% else %>
@@ -10,10 +16,12 @@
 		  	<%= f.file_field :bid_complete %>
 	  		<%= f.hidden_field :completion_status, :value => "completed" %>
 			<%= hidden_field_tag :redirect_to, bid_path(@bid) %>		
-		
-		  	<%= f.submit %>		  	
+		    
+		    <br/>
+		  	<%= f.submit class: 'btn btn-success' %>		  	
 		<% end %>
 		
+		<br/>
 		<%= link_to "If not ready to complete", bids_path, class: "btn btn-info" %>
 	<% end %>
 	

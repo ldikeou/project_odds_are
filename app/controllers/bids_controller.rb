@@ -42,13 +42,16 @@ class BidsController < ApplicationController
 		# binding.pry
 
 		@bid = Bid.find(params[:id])
+		binding.pry
 		@bid.update(update_params)
+
 		if @bid.completion_status == "determined_winner" || @bid.completion_status == "lost"
 			@bid.bid_notifications.create(status: "unread", message: "#{User.find(@bid.sender_id).first_name} has guessed, see the results")
 		elsif @bid.completion_status == "ready_for_challenger"
 			@bid.bid_notifications.create(status: "unread", message: "#{User.find(@bid.receiver_id).first_name} has set range and guess you're up")
 			
 		end
+
 		if(@bid.recip_guess != nil || @bid.challenger_guess != nil)
 			if params[:redirect_to]
 				redirect_to params[:redirect_to]
@@ -88,7 +91,7 @@ private
 			{completion_status: params[:completion_status]}		
 		else
 			params.require(:bid).permit(:range, :recip_guess, :challenger_guess, 
-				:completion_status, :bid_complete)
+				:completion_status, :bid_complete, :runback_recip_guess, :runback_challenger_guess)
 		end
 	end
 

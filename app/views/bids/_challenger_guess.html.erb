@@ -6,8 +6,8 @@
 			<h1><%= @bid.receiver.username %> must now...<%= @bid.description %><br>
 			<%= link_to 'Back to Bids', bid_path(@bid, completion_status: "complete_the_challenge"), method: "PATCH", class: "btn btn-info" %>
 		<% else %>
-			<h2>You lost. <h2>
-			<h1>Wait for <%= @bid.receiver.username %> to decided to run it back!<h1>
+			<h1>You lost. </h1>
+			<h2>Wait for <%= @bid.receiver.username %> to decide to run it back!<h2>
 			<%= link_to 'Back to Bids', bid_path(@bid, completion_status: "lost"), method: "PATCH", class: "btn btn-info" %>
 		<% end %>
 	<% else %>
