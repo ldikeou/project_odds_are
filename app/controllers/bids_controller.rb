@@ -44,7 +44,6 @@ class BidsController < ApplicationController
 		
 
 		@bid = Bid.find(params[:id])
-		binding.pry
 		@bid.update(update_params)
 
 		if @bid.completion_status == "determined_winner" || @bid.completion_status == "lost"
