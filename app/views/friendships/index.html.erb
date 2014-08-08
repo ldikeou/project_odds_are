@@ -1,15 +1,25 @@
 
-<div class="container">
-	<% @friends.each do |f| %>
-		<div class="friends">
-			<div class="row">
-				<div class="col-md-6">
-					<span ><%= link_to f.username.titleize, user_path(f), class: "something_wierd" %></span>
-					<span><%= link_to 'delete friend', friendship_path(f), method: :delete, class: "btn-black btn-xs pull-right"  %></span>
-				</div>
-			</div>
-		</div>
-	<% end %>
-	<br><br>
-	<%= link_to 'Add Friends', new_friendship_path,  class: "btn btn-black" %>
-</div>
+
+<table class="table table-striped">
+  <h2> Friends: <h2>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @friends.each do |friend| %>
+      <tr>
+          <td><%= link_to (image_tag friend.profile_pic.url(:thumb)), friend, id: "nav_pic" %></td>
+          <td><%= link_to "#{friend.username.titleize} (#{friend.first_name.titleize})", user_path(friend), class: "something_wierd" %></td>
+          
+            <td><%= link_to 'delete friend', friendship_path(friend.get_friendship), method: :delete, class: "btn-black btn-xs pull-right"  %></td>
+          
+      </tr>
+    <% end %>
+  </tbody>
+</table>

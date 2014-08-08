@@ -11,8 +11,9 @@ class BidsController < ApplicationController
 	def new
 		@bid = Bid.new(receiver_id: params[:receiver_id])
 		@users = current_user.search(params[:q])
-
+		
 		if request.xhr?
+			
 			render partial: "users", layout: false
 		end
 	end
@@ -26,6 +27,7 @@ class BidsController < ApplicationController
 
 	def edit
 		@bid = Bid.find(params[:id])
+
 	end
 
 	def show
@@ -39,7 +41,7 @@ class BidsController < ApplicationController
 		# when recip picks number ie recip_guess
 		# when challenger pick number
 		# set sender_id
-		# binding.pry
+		
 
 		@bid = Bid.find(params[:id])
 		binding.pry
@@ -59,8 +61,10 @@ class BidsController < ApplicationController
 				redirect_to bids_path
 			end
 		else
+			
 			redirect_to edit_bid_path
 		end
+		
 
 	end
 

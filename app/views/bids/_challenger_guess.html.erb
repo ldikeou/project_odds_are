@@ -1,5 +1,4 @@
 <div class="jumbotron">
-	
 	<% if @bid.challenger_guess.present? %>
 		<% if @bid.recip_guess == @bid.challenger_guess %>
 			<h1>You won!!!<h1><br>
@@ -9,8 +8,10 @@
 			<h1>You lost. </h1>
 			<h2>Wait for <%= @bid.receiver.username %> to decide to run it back!<h2>
 			<%= link_to 'Back to Bids', bid_path(@bid, completion_status: "lost"), method: "PATCH", class: "btn btn-info" %>
+
 		<% end %>
 	<% else %>
+
 		<h1>Odds Are... 1 in <%= @bid.range %></h1>
 		<h3><%= @bid.description %></h3>
 		<%= form_for @bid, url: bid_path(@bid, redirect_to: edit_bid_path(@bid)), method: :patch do |b| %> 

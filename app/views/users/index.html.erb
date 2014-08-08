@@ -1,27 +1,31 @@
-<div class="container">
 
-	
-	<h2>All users that contain your search:</h2>
-	<br>
-	
-		<% @users.each do |user| %>
-		
-		<div class="row">
-			<div class="search_results">
-	 	  
-	 	  	<div class="col-md-6">
-	 	  		<%= link_to (image_tag user.profile_pic.url(:thumb)), user, id: "nav_pic" %>
-	 	  		<span id="cri"><%= link_to "#{user.username.titleize} (#{user.first_name.titleize})", user_path(user), class: "something_wierd" %></span>
-	 	  	</div>
-	 	  	<div class="col-md-6 midcont"><% if current_user.friends?(user) %>
-	 	  		<span>Friends</span>
-	 	  		<% elsif current_user.pending_friends?(user) %>
-		 	  		<span >Friendship Pending</span>
-	 	  		<% else %>
-		 	  		<span ><%= link_to "Add #{user.username.titleize}", friendships_path(@friendship, accepter_id: user.id), method: :post, class: "btn btn-black" %></span>
-	 	  		<% end %></div>
-	 	  </div>
-	 	  </div>
-	 	<% end %>
-	 
-</div>
+
+
+<table class="table table-striped">
+  <h2> Searched Users: <h2>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+          <td><%= link_to (image_tag user.profile_pic.url(:thumb)), user, id: "nav_pic" %></td>
+          <td><%= link_to "#{user.username.titleize} (#{user.first_name.titleize})", user_path(user), class: "something_wierd" %></td>
+          <% if current_user.friends?(user) %>
+            <td>(Friends)</td>
+            <% elsif current_user.pending_friends?(user) %>
+              <td>(Friendship Pending)</td>
+            
+            <% else %>
+              <td><%= link_to "Add #{user.username.titleize}", friendships_path(@friendship, accepter_id: user.id), method: :post, class: "btn btn-black" %></td>
+          <% end %>    
+      </tr>
+    <% end %>
+  </tbody>
+</table>
