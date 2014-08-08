@@ -2,7 +2,12 @@
 
 <% @bids.each do |bid| %>
 	<div class="jumbotron">
-		<h3><%= bid.receiver.username %> has completed...<%= bid.description%></h3>
+		<h1><%= bid.description.titleize %></h1>
+	<% if bid.runback_challenger_guess.present? %>
+		<h2><%= bid.sender.username %> has lost a 1 in <%= bid.range %> odds</h2>
+	<% else %>
+		<h2><%= bid.receiver.username %> has lost a 1 in <%= bid.range %> odds</h2>
+	<% end %>
 		<%= image_tag bid.bid_complete.url(:medium) %>
 	</div>
 

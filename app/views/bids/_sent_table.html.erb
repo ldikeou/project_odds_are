@@ -12,7 +12,7 @@
   <tbody>
     <% @sent_bids.each do |bid| %>
       <tr>
-          <td align="justify"><%= image_tag bid.receiver.profile_pic.url(:thumb), id: "nav_pic" %><%= User.find(bid.receiver).username %></td>
+          <td ><%= image_tag bid.receiver.profile_pic.url(:thumb), id: "nav_pic" %>  <%= link_to "#{bid.receiver.username.titleize}", user_path(bid.receiver), class: "something_wierd" %></td>
           <td><%= bid.description %></td>
           <% if bid.completion_status == "ready_for_range" %>
             <td>Waiting for Recipient to Accept</td>
